@@ -1,3 +1,2 @@
-console.log("g.js");
-console.log("query", query);
-console.log("args", args);
+console.log("g.js", args);
+location="https://www.google.com/#q="+args.join(' ')
