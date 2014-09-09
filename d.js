@@ -1,3 +1,3 @@
 // Del.icio.us Tag Search (All)
 
-http://del.icio.us/tag/(q)
+location="http://del.icio.us/tag/"+args.join(" ")

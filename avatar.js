@@ -1,3 +1,3 @@
-// My Avatar
+// Zeke's avatar on Flickr
 
-http://www.flickr.com/photos/sikelianos/3322146088/
+location="http://www.flickr.com/photos/sikelianos/3322146088/"

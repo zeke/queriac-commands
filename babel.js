@@ -7,4 +7,4 @@ Example (Converts current page from Russian to English)
 j babel -f ru -t en
 */
 
-javascript:void(open('http://babelfish.yahoo.com/translate_url?doit=done&tt=url&intl=1&fr=bf-home&trurl='+encodeURIComponent(location.href)+'&lp=[:from]_[:to]&btnTrUrl=Translate'));
+open('http://babelfish.yahoo.com/translate_url?doit=done&tt=url&intl=1&fr=bf-home&trurl='+encodeURIComponent(location.href)+'&lp=[:from]_[:to]&btnTrUrl=Translate')

@@ -7,4 +7,5 @@ A new and improved alternative to TinyURL. Use bit.ly to generate a shorter vers
 var e=document.createElement('script');
 e.setAttribute('language','javascript');
 e.setAttribute('src','http://bit.ly/bookmarklet/load.js');
-document.body.appendChild(e);void(0);
+document.body.appendChild(e);
+void(0);

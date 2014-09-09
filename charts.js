@@ -7,4 +7,4 @@ Usage
 lu sikelianos
 */
 
-http://www.last.fm/user/(q)/charts/?charttype=recenttracks
+location="http://www.last.fm/user/" + args[0] + "/charts/?charttype=recenttracks"
