@@ -1,0 +1,589 @@
+Keyword,Script,Name,Description
+ord,"if (args.length > 1 && args[args.length-1].match(/^-/)) {
+	var lang = args.pop().replace(/^-/, '')
+	location=""http://ord.zeke.xxx/?lang="" + lang + ""&query=""+args.join("" "");
+} else {
+	location=""http://ord.zeke.xxx/?query=""+args.join("" "");
+}",Ord,
+flip,"(function (d, w, p, s, r, t, l) {
+    t = (w.screenTop || w.screenY) + 50;
+    l = (w.screenX || w.screenLeft) + (w.innerWidth || d.documentElement.offsetWidth || 0) / 2 - s / 2;
+    w.__flipboard = w.open('https://share.flipboard.com/bookmarklet/popout?v=2&title=' + encodeURIComponent(d.title) + '&url=' + encodeURIComponent(w.location.href) + '&t=' + p, '__flipboard_flipit', 'width=' + s + ',height=' + r + ',top=' + t + ',left=' + l + ',location=yes,resizable=yes,status=no,scrollbars=no,personalbar=no,toolbar=no,menubar=no');
+    s = d.createElement('script');
+    s.setAttribute('type', 'text/javascript');
+    s.setAttribute('src', 'https://d2jsycj2ly2vqh.cloudfront.net/bookmarklet/js/popout-helper.min.js?t=' + p);
+    d.body.appendChild(s);
+    setTimeout(function () {
+        w.__flipboard.focus()
+    }, 50);
+})(document, window, (new Date().getTime()), 535, 565)",Save Current Page to Flipboard,
+ghub,"location=""https://ghub.io/""+args[0];","Redirect to a npm package's GitHub page, if available.",
+pulls,"/*
+Usage:
+pulls devcenter             # github.com/heroku/devcenter/pulls
+pulls zeke/queriac          # github.com/zeke/queriac/pulls
+*/
+
+// Assume github user is 'heroku' if no slash is present in first arg
+if (args[0].indexOf(""/"") == -1) {
+ args[0] = ""heroku/""+args[0]; 
+}
+
+location=""https://github.com/"" + args[0] + ""/pulls""",Github Pull Requests,
+group,"location=""https://groups.google.com/a/heroku.com/forum/#!forum/"" + args[0]",Google Groups Jump,
+gl,"location=""http://www.google.com/search?btnI=I'm%20Feeling%20Lucky&q=site:github.com ""+args.join("" "");",Github Lucky,
+fish,location='https://vault-reports.herokuapp.com/fishing-pole/'+args[0];,Heroku Fishing Pole Search,
+npms,"location=""https://npmjs.org/search?q=""+args.join("" "");",npm Search,
+gs,"location=""https://github.com/search?type=Code&q=""+args.join(' ');",Github Search,""
+markup,"if(!this.JSON)this.JSON={};
+(function(){function v(j){return j<10?""0""+j:j}function A(j){B.lastIndex=0;return B.test(j)?'""'+j.replace(B,function(o){var i=w[o];return typeof i===""string""?i:""\\u""+(""0000""+o.charCodeAt(0).toString(16)).slice(-4)})+'""':'""'+j+'""'}function y(j,o){var i,k,m,r,l=p,n,e=o[j];if(typeof t===""function"")e=t.call(o,j,e);switch(typeof e){case ""string"":return A(e);case ""number"":return isFinite(e)?String(e):""null"";case ""boolean"":case ""null"":return String(e);case ""object"":if(!e)return""null"";p+=z;n=[];if(Object.prototype.toString.apply(e)===
+""[object Array]""){r=e.length;for(i=0;i<r;i+=1)n[i]=y(i,e)||""null"";m=n.length===0?""[]"":p?""[\n""+p+n.join("",\n""+p)+""\n""+l+""]"":""[""+n.join("","")+""]"";p=l;return m}if(t&&typeof t===""object""){r=t.length;for(i=0;i<r;i+=1){k=t[i];if(typeof k===""string"")if(m=y(k,e))n.push(A(k)+(p?"": "":"":"")+m)}}else for(k in e)if(Object.hasOwnProperty.call(e,k))if(m=y(k,e))n.push(A(k)+(p?"": "":"":"")+m);m=n.length===0?""{}"":p?""{\n""+p+n.join("",\n""+p)+""\n""+l+""}"":""{""+n.join("","")+""}"";p=l;return m}}if(typeof Date.prototype.toJSON!==""function""){Date.prototype.toJSON=
+function(){return isFinite(this.valueOf())?this.getUTCFullYear()+""-""+v(this.getUTCMonth()+1)+""-""+v(this.getUTCDate())+""T""+v(this.getUTCHours())+"":""+v(this.getUTCMinutes())+"":""+v(this.getUTCSeconds())+""Z"":null};String.prototype.toJSON=Number.prototype.toJSON=Boolean.prototype.toJSON=function(){return this.valueOf()}}var C=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,B=/[\\\""\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+p,z,w={""\u0008"":""\\b"",""\t"":""\\t"",""\n"":""\\n"",""\u000c"":""\\f"",""\r"":""\\r"",'""':'\\""',""\\"":""\\\\""},t;if(typeof JSON.stringify!==""function""||'{""a"":[1]}'!=JSON.stringify({a:[1]}))JSON.stringify=function(j,o,i){var k;z=p="""";if(typeof i===""number"")for(k=0;k<i;k+=1)z+="" "";else if(typeof i===""string"")z=i;if((t=o)&&typeof o!==""function""&&(typeof o!==""object""||typeof o.length!==""number""))throw Error(""JSON.stringify"");return y("""",{"""":j})};if(typeof JSON.parse!==""function"")JSON.parse=function(j,o){function i(m,r){var l,
+n,e=m[r];if(e&&typeof e===""object"")for(l in e)if(Object.hasOwnProperty.call(e,l)){n=i(e,l);if(n!==undefined)e[l]=n;else delete e[l]}return o.call(m,r,e)}var k;j=String(j);C.lastIndex=0;if(C.test(j))j=j.replace(C,function(m){return""\\u""+(""0000""+m.charCodeAt(0).toString(16)).slice(-4)});if(/^[\],:{}\s]*$/.test(j.replace(/\\(?:[""\\\/bfnrt]|u[0-9a-fA-F]{4})/g,""@"").replace(/""[^""\\\n\r]*""|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,""]"").replace(/(?:^|:|,)(?:\s*\[)+/g,""""))){k=eval(""(""+j+"")"");return typeof o===
+""function""?i({"""":k},""""):k}throw new SyntaxError(""JSON.parse"");}})();
+(function(){function v(a,b){function c(){e(""html"")[0].style.overflowY=""hidden"";b.apply(d,arguments)}var d=document.createElement(""iframe"");with(d){id=""markup-ui"";className=""added-by-markup"";frameBorder=""0"";allowTransparency=""true"";with(style){position=""absolute"";left=top=""0px"";width=height=""100%"";borderStyle=""none"";zIndex=""5000"";visibility=""hidden"";overflow=""auto""}}d.addEventListener?d.addEventListener(""load"",c,false):d.attachEvent(""onreadystatechange"",c);d.src=H+""/ui""+a.uri;x.appendChild(d)}function A(){var a=
+[].concat(e(""script"")||[]).concat(e(""style"")||[]).concat(e(""link"")||[]).concat(function(b){for(var c=[],d=0,h=b.length;d<h;d++)c.push(b.item(d));return c}(document.body.childNodes)||[]);r(a,function(b){/added-by-markup/.test(b.className)||w(b)})}function y(){function a(d){c(d)}function b(){function d(f){var g=new XMLHttpRequest;if(""withCredentials""in g)g.open(f.type,f.url,true);else{g=flensed.flXHR({instancePooling:true,xmlResponseText:false,autoUpdatePlayer:true});if(f.type==""get""&&!f.headers)g.open(f.type,
+f.url,true);else{g.open(""post"",f.url);g.setRequestHeader(""X-HTTP-Method-Override"",f.type);f.data=f.data||""{}""}}return g}function h(f,g){var q=document.createElement(""script""),s=0,E;document.getElementsByTagName(""head"")[0].appendChild(q);q.src=f;q.type=""text/javascript"";E=setInterval(function(){if(g()){if(s++>50){clearInterval(E);throw""Could not load: ""+f;}}else clearInterval(E)},50)}c=function(f){var g=d(f);if(f.headers)for(var q in f.headers)g.setRequestHeader(q,f.headers[q]);g.onreadystatechange=
+function(){try{if(g.readyState==4)if(g.status>=200&&g.status<300)f.success&&f.success(JSON.parse(g.responseText));else f.error&&f.error(g,g.status)}catch(s){console.log(s.toString())}};g.onerror=function(s){console.log(""Error:"",s.status);s.status=s.status||s.number;f.error&&f.error(s,s.status)};if(f.data){g.setRequestHeader(""Content-Type"",""application/json"");g.send(JSON.stringify(f.data))}else g.send()};c.setup=function(f,g){var q=new XMLHttpRequest;if(typeof f==""function""){g=f;f=F}if(""withCredentials""in
+q)g();else{f=f||""/flensed"";if(typeof flensed==""undefined"")window.flensed={base_path:f+""/""};flensed.flXHR?g():h(f+""/flXHR.js?cache=false-""+(new Date).getTime(),function(){if(!flensed.flXHR)return true;flensed.flXHR.module_ready();g()})}}}var c;return{start_draft:function(d){a({type:""post"",url:MarkUp.api_uri+""/draft"",data:{html:u.html,width:u.width,height:u.height,useragent:u.useragent,location:u.location,client:MarkUp.client_id,version:MarkUp.api_version},success:d,error:function(h){console.log(h)}})},
+setup:function(){b();c.setup.apply(c,arguments);D.xdom=c}}}function C(){e(""frameset"").length&&function(){var a=e(""html"")[0],b=document.createElement(""body""),c=e(""frameset"")[0];a.appendChild(b);b.appendChild(c)}()}function B(){var a=[""lib"",""pagefix""];if(!(document.getElementsByTagName(""base"").length>0)){var b=document.getElementsByTagName(""head"")[0],c=document.createElement(""base"");c.href=document.location.href;if(b&&b.firstChild)b.insertBefore(c,b.firstChild);else b&&b.appendChild(c)}m(e(""script""),
+w);p()&&a.push(""svg"");add_js(I+""/dynamic/pagefix??""+a.join("",""));a=document.getElementsByTagName(""*"");b=[""onload"",""onunload"",""onmouseover"",""onmouseout"",""onclick"",""onmousedown"",""onmouseup""];c=0;for(var d=a.length;c<d;c++)for(var h=0,f=b.length;h<f;h++)try{if(b[h]in a[c]&&a[c][b[h]]!==null){a[c][b[h]]=null;a[c].removeAttribute(b[h])}}catch(g){}}function p(){var a=false;r(e(""svg""),function(b){var c=l(""script"",{type:""image/svg+xml""});b.parentNode.insertBefore(c,b);c.innerHTML=t(b);b.parentNode.removeChild(b);
+a=true});return a}function z(){var a=k(),b=a.body;a=a.window;var c=t(document),d=[document.getElementsByTagName(""html"")[0]];return{html:c,nodes:Array.prototype.slice.call(d),width:a.width-b.width<17?b.width:a.width>b.width?a.width:b.width,height:a.height>b.height?a.height:b.height,useragent:window.navigator.userAgent,location:window.location.href}}function w(a){a&&a.parentNode&&a.parentNode.removeChild(a)}function t(a){try{return(new XMLSerializer).serializeToString(a)}catch(b){try{for(var c=[],d=
+0,h=document.childNodes.length;d<h;d++){a=document.childNodes[d];/!/.test(a.tagName)&&a.data?c.push(""<!""+a.data+"">""):c.push(a.outerHTML||"""")}return c.join(""\n"")}catch(f){console.error(""Cannot serialize DOM."")}}return false}function j(){var a=/MSIE ([^;]+);/.exec(window.navigator.userAgent),b=a?parseInt(a[1]):F;if(!a||b>6)return false;a=""mu-""+(new Date).getTime();var c=""#""+a,d=k();b=d.window.width>d.body.width?d.window.width:d.body.width;d=d.window.height>d.body.height?d.window.height:d.body.height;
+var h=l(""div"",{id:a});x.appendChild(l(""div"",{id:a+""-backdrop""}));x.appendChild(h);h.innerHTML='<a href=""#"" id=""'+a+'-close"">Close</a><h1>Oops&hellip;</h1><p class=""first"">Markup\'s drawing tools don\'t work very well in Internet Explorer just yet.</p><p>Stay tuned to <a target=""_blank"" href=""http://twitter.com/markupio"">@markupio</a> on Twitter to be the first to know when we get it ready.</p><p>Until then, please try another browser like <a target=""_blank"" href=""http://www.google.com/chrome"">Google Chrome</a>, <a target=""_blank"" href=""http://www.apple.com/safari/"">Safari</a>, <a target=""_blank"" href=""http://getfirefox.com"">Firefox</a>, or <a  target=""_blank"" href=""http://opera.com/"">Opera</a>. (All of which are free to download and use).</p><style type=""text/css"">'+
+c+""{position:absolute; top:50px; left:50%;z-index:32000;width:380px; margin-left:-190px; padding:20px;text-align:left;background:#111;}""+c+"" h1 {color:#edeae1; font-family:helvetica,arial,sans-serif; font-size:28px; line-height:28px; font-weight:bold; margin:0px 0px 20px; padding:0px;}""+c+"" p {color:#ccc; font-family:helvetica,arial,sans-serif; font-size:12px; line-height:18px; font-weight:normal; margin:0px 0px 10px; padding:0px;}""+c+"" a {color:#fff; text-decoration:underline;}""+c+"" p.first {color:#fff;font-size:18px; line-height:22px;border-bottom:1px #fff solid;padding-bottom:10px; margin-bottom:20px;}#""+
+a+""-close {display: block;position: absolute; top: -5px; left: -5px;width: 21px; height: 21px;text-indent:-9999px; border: none; cursor: pointer;background:url(""+G+""/client/assets/images/close.gif) no-repeat;}#""+a+""-backdrop {position:absolute; top:0px; left:0px;background:#fff; z-index:4999;opacity: 0.4; filter:alpha(opacity=40);margin-left: -20px; width:""+b+""px; height:""+d+""px;}</style>"";window.close=e(c+""-close"");window.K=e;e(c+""-close"").onclick=function(){x.removeChild(e(c+""-backdrop""));x.removeChild(e(c));
+return false};return true}function o(){var a=J,b=a.window.width>a.body.width?a.window.width:a.body.width;a=a.window.height>a.body.height?a.window.height:a.body.height;x.appendChild(l(""div"",{id:""markup_loading"",style:""position:fixed; top:-5px; right:10px;                   height:40px;                   color:#ccc; font-family:Tahoma;                   font-size:12px; line-height:12px;                   font-family:helvetica, arial, sans-serif;                   -moz-border-radius:3px; -webkit-border-radius:4px;                   cursor:default;                   background: #222;                   background: -moz-linear-gradient(top, rgba(70,70,70,0.95), rgba(6,6,6,0.95));                   background: -webkit-gradient(linear, left top, left bottom, from(rgba(70,70,70,0.95)), to(rgba(6,6,6,0.95)));                   z-index:5000;""})).appendChild(l(""div"",
+{style:""padding:15px 20px 7px 20px;""},""MarkUp &mdash; Loading&hellip;""));x.appendChild(l(""div"",{id:""markup_loading_backdrop"",style:""position:fixed; top:0px; left:0px;                  background:#eee; z-index:4999;                  opacity: 0.5; filter:alpha(opacity=50);                  margin-left: 0px;                  width:""+b+""px; height:""+a+""px;""}))}function i(a){if(!a)return[];if(""toArray""in Object(a))return a.toArray();for(var b=a.length||0,c=[],d=0;d<b;d++)c.push(a[d]);return c}function k(){return{window:window.innerHeight!==
+F?{width:window.innerWidth,height:window.innerHeight}:document.documentElement.clientWidth?{width:document.documentElement.clientWidth,height:document.documentElement.clientHeight}:{width:document.body.clientWidth,height:document.body.clientHeight},body:{width:K.scrollWidth,height:K.scrollHeight}}}function m(a,b){for(var c=i(a),d=0,h=c.length;d<h;d++)c[d]=b.call(c,c[d],d,h);return c}function r(a,b){for(var c=i(a),d=0,h=c.length;d<h;d++)b.call(c,c[d],d,h);return c}function l(a,b,c){var d=document.createElementNS?
+document.createElementNS(""http://www.w3.org/1999/xhtml"",a):document.createElement(a);b=b||{};b.className=""added-by-markup""+(b.className?"" ""+b.className:"""");for(q in b)if(q!=""style"")d[q]=b[q];if(b.style){b=b.style.split("";"");for(var h=0,f=b.length-1;h<f;h++){var g=b[h].split("":""),q=g[0].replace(/^\s+|\s+$/,"""").toLowerCase().replace(/-(a-z)/gm,""$1"".toUpperCase());g=g[1].replace(/^\s+|\s+$/,"""");try{d.style[q]=g}catch(s){}}}if(!/html|head|body|style|link|meta|img/i.test(a))d.innerHTML=c||"""";return d}
+function n(){for(var a=this.all||this.getElementsByTagName(""*""),b=[],c=0,d=a.length;c<d;c++)re.test(a[c].className)&&b.push(a[c]);return b}function e(a,b){var c=b||document;c.getElementsByClassName=c.getElementsByClassName||n;if(/,/.test(a))m(a.split(/\s*,\s*/),function(){});else return/^#/.test(a)?c.getElementById(a.substr(1)):/^\./.test(a)?i(c.getElementsByClassName(a)):i(c.getElementsByTagName(a))}var x=document.body,K=document.documentElement?document.documentElement:document.body;if(window.MarkUp)if(window.MarkUp.demo){w(document.getElementById(""markup-bar""));
+_MarkUp=MarkUp;_Draw=Draw;_Ui=Ui}else{if(window.MarkUp.muid)return false}else{window.MarkUp={};window.add_js=window.add_js||function(a){var b=(document.getElementsByTagName(""head"")[0]||document.body).appendChild(document.createElement(""script""));b.src=a;b.type=""text/javascript""}}var F,I=window.MarkUp.base_uri||""http://markup.io"",G=window.MarkUp.static_uri||""http://markup.io/media"",H=window.MarkUp.api_uri||""http://api.markup.io"",M=parseInt(""1""),L=window.MarkUp&&window.MarkUp.id;r(e(""script""),function(a){if(a.markup)L=
+a.markup});window.MarkUp={base_uri:I,api_uri:H,static_uri:G,muid:""muid_""+(new Date).getTime(),client_id:L,api_version:M};var u,J,D;MarkUp.check_in=function(){};if(typeof window.console===""undefined"")console={error:alert,log:alert};(function(){if(!j()){B();J=k();u=z();D=y();C();o();D.setup(G+""/flensed"",function(){D.start_draft(function(a){v(a,function(){w(e(""#markup_loading""));w(e(""#markup_loading_backdrop""));var b=u.width+""px"",c=u.height+""px"";with(e(""html"")[0].style){width=b;height=c;overflow=""hidden""}with(e(""body"")[0].style){width=
+b;height=c;overflow=""hidden""}with(e(""#markup-ui"").style){width=b;height=c;visibility=""visible""}A();with(e(""html"")[0].style){margin=""0px"";height=width=""100%""}with(e(""body"")[0].style){margin=""0px"";height=width=""100%""}with(e(""#markup-ui"").style)height=width=""100%""})})})}})()})();",Markup.io,""
+npm,"location=""https://npmjs.org/package/""+args[0];",Show NPM Module,""
+mp3,"location=""http://www.amazon.com/s/ref=ntt_srch_drd_B0073QR2LO?ie=UTF8&index=digital-music&search-type=ss&field-keywords=""+args.join(' ');",Amazon MP3 Search,Search for downloadable music on Amazon
+chrome,"location=""https://chrome.google.com/webstore/search/""+args.join(' ');",Google Chrome Store Search,""
+noun,"location=""http://thenounproject.com/search/?q=""+args.join("" "");",The Noun Project,Vector icon search
+pocket,(function(){ISRIL_H='3c8b';PKT_D='getpocket.com';ISRIL_SCRIPT=document.createElement('SCRIPT');ISRIL_SCRIPT.type='text/javascript';ISRIL_SCRIPT.src='https://'+PKT_D+'/b/r.js';document.getElementsByTagName('head')[0].appendChild(ISRIL_SCRIPT)})();,Save for Later with Pocket,""
+ea,"window.location=""https://addons.heroku.com/marketplace/addons/""+ args[0] + ""/edit"";",Edit Addon,""
+rotten,"window.location=""http://quickrotten.com/?q=""+args.join("" "");",QuickRotten,A minimalist interface for Rotten Tomatoes movies reviews
+show,"window.location=""https://www.queriac.com/users/zeke/commands/""+args[0];",Show Queriac Command,""
+tk,"window.location=""https://typekit.com/search?utf8=%E2%9C%93&q=""+args.join("" "");",Typekit Font Search,""
+gem,"window.location=""http://rubygems.org/gems/""+args[0];",RubyGems Search,""
+gms,"window.location=""https://mail.google.com/mail/u/0/#search/""+args.join("" "");",Gmail Search,""
+twitch,"i=10;
+setInterval(function() {
+  $('body').css(""-webkit-transform"",""rotate(""+ (i=i*-1) +""deg)"")
+},500)",Twitchy Page,""
+http://www.flickr.com/photos/sikelianos/sets/,"var u == args[0] || ""sikelianos"";
+window.location=""http://www.flickr.com/photos/""+u+""/sets/"";",My Flickr Sets,""
+zep,"(function(){
+  var s=document.createElement('script');
+  s.setAttribute('src','https://queriac2.herokuapp.com/zepto.min.js');
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();",Inject Zepto,""
+c,"/*
+Usage:
+c addons               # github.com/heroku/addons/commits/master
+c zeke/queriac2        # github.com/zeke/queriac2/commits/master
+*/
+
+// Assume github user is 'heroku' if no slash is present in first arg
+if (args[0].indexOf(""/"") == -1) {
+ args[0] = ""heroku/""+args[0]; 
+}
+
+window.location = ""https://github.com/"" + args[0] + ""/commits/master"";",Github Commits (Heroku),""
+cheap,"window.location=""http://www.namecheap.com/domains/domain-name-search/results.aspx?domain=""+args[0];",Namecheap Domain Search,
+devl,"window.location=""https://devcenter.heroku.com/articles/""+args[0]",Heroku Devcenter: I'm Feeling Lucky,
+w,"window.location=""http://www.google.com/search?btnI=I'm%20Feeling%20Lucky&q=site:en.wikipedia.org ""+args.join("" "");",I'm Feeling Lucky for Wikipedia,
+read,"
+window.rdb=typeof window.rdb!==""object""?{}:window.rdb;var JSON;JSON||(JSON={}),function(){function str(a,b){var c,d,e,f,g=gap,h,i=b[a];i&&typeof i==""object""&&typeof i.toJSON==""function""&&(i=i.toJSON(a)),typeof rep==""function""&&(i=rep.call(b,a,i));switch(typeof i){case""string"":return quote(i);case""number"":return isFinite(i)?String(i):""null"";case""boolean"":case""null"":return String(i);case""object"":if(!i)return""null"";gap+=indent,h=[];if(Object.prototype.toString.apply(i)===""[object Array]""){f=i.length;for(c=0;c<f;c+=1)h[c]=str(c,i)||""null"";e=h.length===0?""[]"":gap?""[\n""+gap+h.join("",\n""+gap)+""\n""+g+""]"":""[""+h.join("","")+""]"",gap=g;return e}if(rep&&typeof rep==""object""){f=rep.length;for(c=0;c<f;c+=1)typeof rep[c]==""string""&&(d=rep[c],e=str(d,i),e&&h.push(quote(d)+(gap?"": "":"":"")+e))}else for(d in i)Object.prototype.hasOwnProperty.call(i,d)&&(e=str(d,i),e&&h.push(quote(d)+(gap?"": "":"":"")+e));e=h.length===0?""{}"":gap?""{\n""+gap+h.join("",\n""+gap)+""\n""+g+""}"":""{""+h.join("","")+""}"",gap=g;return e}}function quote(a){escapable.lastIndex=0;return escapable.test(a)?'""'+a.replace(escapable,function(a){var b=meta[a];return typeof b==""string""?b:""\\u""+(""0000""+a.charCodeAt(0).toString(16)).slice(-4)})+'""':'""'+a+'""'}function f(a){return a<10?""0""+a:a}""use strict"",typeof Date.prototype.toJSON!=""function""&&(Date.prototype.toJSON=function(a){return isFinite(this.valueOf())?this.getUTCFullYear()+""-""+f(this.getUTCMonth()+1)+""-""+f(this.getUTCDate())+""T""+f(this.getUTCHours())+"":""+f(this.getUTCMinutes())+"":""+f(this.getUTCSeconds())+""Z"":null},String.prototype.toJSON=Number.prototype.toJSON=Boolean.prototype.toJSON=function(a){return this.valueOf()});var cx=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,escapable=/[\\\""\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,gap,indent,meta={""\b"":""\\b"",""\t"":""\\t"",""\n"":""\\n"",""\f"":""\\f"",""\r"":""\\r"",'""':'\\""',""\\"":""\\\\""},rep;typeof JSON.stringify!=""function""&&(JSON.stringify=function(a,b,c){var d;gap="""",indent="""";if(typeof c==""number"")for(d=0;d<c;d+=1)indent+="" "";else typeof c==""string""&&(indent=c);rep=b;if(b&&typeof b!=""function""&&(typeof b!=""object""||typeof b.length!=""number""))throw new Error(""JSON.stringify"");return str("""",{"""":a})}),typeof JSON.parse!=""function""&&(JSON.parse=function(text,reviver){function walk(a,b){var c,d,e=a[b];if(e&&typeof e==""object"")for(c in e)Object.prototype.hasOwnProperty.call(e,c)&&(d=walk(e,c),d!==undefined?e[c]=d:delete e[c]);return reviver.call(a,b,e)}var j;text=String(text),cx.lastIndex=0,cx.test(text)&&(text=text.replace(cx,function(a){return""\\u""+(""0000""+a.charCodeAt(0).toString(16)).slice(-4)}));if(/^[\],:{}\s]*$/.test(text.replace(/\\(?:[""\\\/bfnrt]|u[0-9a-fA-F]{4})/g,""@"").replace(/""[^""\\\n\r]*""|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,""]"").replace(/(?:^|:|,)(?:\s*\[)+/g,""""))){j=eval(""(""+text+"")"");return typeof reviver==""function""?walk({"""":j},""""):j}throw new SyntaxError(""JSON.parse"")})}()
+window.rdb.bookmarklet=(function(){var baseUrl='http://www.readability.com',action='read',optedOut=('false'==='true'),keepOffGrass=('false'==='true'),savePost=('false'==='true'),referredArticleUrl='',referredArticleId='',readPostUrl=baseUrl+'/articles/queue',savePostUrl=baseUrl+'/articles/queue',sendToKindleUrl=baseUrl+'/kindle/queue',kindleSetupUrl=baseUrl+'/kindle/setup',readbarUrl=baseUrl+'/read',failUrl=baseUrl+'/articles/fail',fromEmbed=(typeof window.rdbEmbed!==""undefined""),articlePreviouslyValidated=false,docHtml='',token,extensionType,extensionVersion,legacyBookmarklet,readUrl,charset,frameId,kindleFrameId,formId,messageCallbacks;function isQuirks(){if(typeof document.documentMode!==""undefined""&&document.documentMode<7){return true;}
+return false;}
+function getUrl(){var url,dummyLink;if(typeof window.readabilityUrl!==""undefined""&&window.readabilityUrl.length>0){url=window.readabilityUrl.toString();}else{url=window.location.href;}
+dummyLink=document.createElement('a');dummyLink.href=url;return dummyLink.href;}
+function getHost(url){var dummyLink=document.createElement('a');dummyLink.href=url;return dummyLink.hostname;}
+function urlIsParsable(url){var i,il,netloc;try{netloc=url.match(/^https?:\/\/([^\/]*)/)[1];}catch(e){return false;}
+if(keepOffGrass){return false;}
+return true;}
+function urlIsLocal(url){return url.indexOf(baseUrl)===0;}
+function listen(evnt,elem,func){if(elem.addEventListener){elem.addEventListener(evnt,func,false);}else if(elem.attachEvent){elem.attachEvent(""on""+evnt,func);}else{return false;}
+return true;}
+function unlisten(evnt,elem,func,useCapture){if(elem.removeEventListener){elem.removeEventListener(evnt,func,useCapture);return true;}else if(elem.detachEvent){var r=elem.detachEvent(""on""+evnt,func);return r;}else{return false;}}
+function loadingBox(){if(document.getElementById('rdb-ext-LoadingBox')){return document.getElementById('rdb-ext-LoadingBox');}
+var d=document.createElement('div'),cssPosition=isQuirks()?'absolute':'fixed',img;switch(action){case'save':img='iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARZJREFUeNrsmDEKwjAUhtMOgiDUEwgeoOA96uglnJycXIVOgjdw8AxewTN4BkGoCF3jX1CI0ITSNk0i/4NvadMkX15eCYmklCLkiCjguUAGcpA6nOMTTNsI7MHOg0VuJbABR092iVFAVAI13OVv5Jp2tkiUsQtTW10G1IcXsBx41RNQNMlA3KCzueMibvUXktb2rL5/9bsxKLsUsWsBtQ0FKEABClCAAhSgAAUoQAEKUIACNgRiYTcm4AQOYGRlBM2FUZf4XkSl4KY8v4KZof9CMwfjxZYtgTUoa949QNangI0a6Kt2nBUxBShAAQr8h0Cj+FuB1+cc472A7jB3FoGELgPVyXELVmAR4hYSoWeAAkPFW4ABAAMiHbjvzPGMAAAAAElFTkSuQmCC';break;case'send-to-kindle':img='iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4FJREFUeNrsWktIG1EUvSYx2KAYIkLAHwUlIBSJipCNUQQ/iGBxEalEiwjdGLIQCV0GSigSSoWC+EFCgyvR6s6FG3FRyCal+FtEqUWUEAjih0gkpPdOUdDq5CXOzEuoBw6TSd7L3PPefXfevTN5yWQSRPAS6USakKUgH6LIENKHDKTTMU9EQBlyG1kMyuIdcoa1sUrkNxsH4wkfkGopBJQBH5CrGqQQ8AL4gfnaGtaG19fXcHFxIbml+fn5UFhYmHF/JgFnZ2dQX18v23Cvr69DZWUlqFSqtPsy9Tg+PpbVXy4vLyEajWbUl0lAIpGQ3enJRWVzIR6orq5+9LdQKJTeDGQzngX8twIKCgqgtbU1NwWQ8bOzs9DQ0JB7Am6Mt1gskvyfRmnj5+fnoampKffWgBzGKyZALuMVcSEy3ufzQWNjY+6FUVbj9/f3IRaLZdcM6HQ6wW3EjK+trRXcitodHByAwWAAq9UKR0dHtHf/zU0Ai/GE5uZmgTdAw2FjYwN2dna+4el35BTSr6gLsRr/EMrLy2FgYAAWFxeJFtyRfsWvJxQVYDKZBNd4KsxmMywvL0N3d/c4nn5WTEAwGASbzQaRSESS2fR6vVBXV0fFtXHFotDu7i709fXdSTweAonc2tqC09NT0aR/cnKSItrEQ9UK2cIo5dH9/f0QCDxeKVxaWoLe3l5oaWkRMrC2tjbB2MPDw3/WRk9PD318o+h9gEZ2eHgY1tbWRNstLCzA5uamsPipMtHR0fHL5XLB+fn5bZv29nY6vFZ8K3F1dQWjo6Pg9/tTtq2qqgKHwwF7e3tWnJ2PnZ2dt25Iixph4baZc7vd4PF40unyPhwOO+x2u+BSer0eioqKqORYzC0fIBdxOp3plFC+4EIfoz5U2kEBcF8A8514dXVVEhFzc3MwNDQE09PTwjlFqxT4hJHq1crKyluKSAgt14xsZGQEKioqhAh1cnICpaVMz02maFNIm8P7oZRLYWtwcFDwa9zzQFdXF0uXAN5bzCggCH+f5PAVcBNxiGngB0Y0HR5juVwXimUURjUa+SdKq9XKl5HRosv0AiyDYzQaoaSkRL6MjHaFNTU1EI/HJS21q9XqJw+MRolplhPPxd1sFhDnaFdcCgERTsZTrI9KIYCykAQHATOYnbHPPr3sIUI78mdSGWwj3UhtCpvuMC/F6zZZjz8CDAA/xry7UQNcuAAAAABJRU5ErkJggg==';break;default:img='iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAnxJREFUeNrsmkFIVEEYx98aCMLCwoIgdAgjCBZWDMHoZJfAsKOnDiIIhZ5EL4GhCIanopNhEEVRFIGgbCQGoigePAmCGEWRJAqRIC0JC/L6f/h/OA1vxX37Rlf4Pvjhk3k7M7+Z+WZgZxO+73sRoguMgAL4TFaJPO94JxSJEgVawShoBBsgRez4RZE1sGJIbp6WQAY8pMAuGAIv+FxPoazx91KRenYpskK5QOy7K4E0l8od/v8U3OcSOceOyjtJdmSD7yUtqSY+Vxdpp2AtwWUwW65AJ3jMJfIJ9HKkakEdl4O5JK6xk0HZPPgaMpOBVCB4PqTtD+BWuQI50AbegLsgb5VnObJpjtiiUXYZtLO8QJlZjq4dtayrmflVkoAnAkXI+YfxBzwHLSHvVYN28BK85XPaKK8D3eAj2AIToA9krXpSRnu5I/r1H8cVMOMbGAb1IZ+Rzt4D62AODICM1UkRfM9B+Q0mQc1JCpghnewEyZDPt3DWpKM/wBhoY2eDmVtgPanTEjCX2GtwI6SeJCXn+O5f0Gq1EVmgKqbzRLbN22AG/ATDxlmQ55lxnedHDRM/lqhycLrLtjgIvoAlniEpY7+PNVwIeNbZMA7GXDXgWsB5qIAKqIAKqIAKqIAKqIAKqIAKqIAKqIAKqEDsAh3gCdg/qwJyjdQDGsD0WV5Cchl3k6w57It8b7rsMgdkFq6Afu/gtjHu2ANXwQXv4DLRSRLLKD0CFx3mh9x0TrnehSomP8rdRsvNj1dguxLOgWnORk+J+fGOyzFfCQfZPvPiqPyQO+dnIckbPZeOe5kWgQzvhn1eADppJxHx5zalhPxARG7sH7io/J8AAwBqlY+jtamg0AAAAABJRU5ErkJggg==';break;}
+d.setAttribute('id','rdb-ext-LoadingBox');d.style.cssText=['display: block;','height: 107px;','left: 50%;','margin-left: -95px;','padding: 22px 0 0;','position: '+cssPosition+';','top: 20%;','width: 189px;','z-index: 500000;','background-color: #232323;','-moz-border-radius: 10px;','-webkit-border-radius: 10px;','border-radius: 10px;','border-width: 1px 0 0 1px;','border-style: solid;','border-color: #000;','filter: alpha(opacity=85);','-moz-opacity: .85;','opacity: .85;','text-align: center;'].join('');d.innerHTML=['<img id=""rdb-ext-LoadingImage"" height=""48"" width=""48"" style=""display: inline-block; float: none; margin: 0; padding: 0; border: none; visibility: visible; opacity: 1;"" src=""data:image/png;base64,',img,'"" />','<div id=""rdb-ext-LoadingText"" style=""display:block; margin-left:0; padding-top: 10px; color: #FFFFFF; font: bold 18px Georgia; text-align: center;""><span id=""rdb-ext-LoadingInnerText"">Saving</span></div>'].join('');document.body.appendChild(d);return d;}
+function showLoading(text,loading){loadingBox();var loadTxt=document.getElementById('rdb-ext-LoadingText'),loadDiv=(loading)?document.getElementById('rdb-ext-LoadingInnerText'):document.getElementById('rdb-ext-LoadingText'),ellipse=document.getElementById('rdb-ext-ellipses-loader')||document.createElement('span');loadTxt.style.marginLeft='0px';if(text){loadDiv.innerHTML=text;}
+if(loading){loadTxt.style.marginLeft='20px';ellipse.setAttribute('id','rdb-ext-ellipses-loader');ellipse.style.cssText=['display: inline-block;','width: 22px;','text-align: left;'].join('');loadTxt.appendChild(ellipse);window.setInterval(function(){ellipse.innerHTML=(ellipse.innerHTML.length<3)?ellipse.innerHTML+'.':'';},500);}}
+function hideLoading(){var loadBox=document.getElementById('rdb-ext-LoadingBox');if(loadBox){loadBox.parentNode.removeChild(loadBox);}}
+function showKindleSetup(){var kindleSetupFrame=document.getElementById(kindleFrameId),windowHeight=window.innerHeight||document.documentElement.clientHeight,windowWidth=window.innerWidth||document.documentElement.clientWidth,cssWidth=738,cssHeight=564,cssTop=Math.max(10,(windowHeight-cssHeight)/5),cssPosition=(isQuirks()||windowWidth-150<cssWidth||windowHeight-150<cssHeight)?'absolute':'fixed';if(kindleSetupFrame===null){try{kindleSetupFrame=document.createElement('<iframe name=""'+kindleFrameId+'"">');}catch(ex){kindleSetupFrame=document.createElement('iframe');}
+document.body.appendChild(kindleSetupFrame);}
+kindleSetupFrame.setAttribute('id',kindleFrameId);kindleSetupFrame.setAttribute('name',kindleFrameId);kindleSetupFrame.setAttribute('src',kindleSetupUrl);kindleSetupFrame.setAttribute('allowTransparency','true');kindleSetupFrame.style.cssText=['background: url('+baseUrl+'/media/images/bg_login_modal.png);','padding: 6px;','border:none;','display: none;','z-index: 50000;','position: '+cssPosition+';','width: '+cssWidth+'px;','height: '+cssHeight+'px;','left: 50%;','margin-left: -'+(cssWidth/2)+'px;','top: '+cssTop+'px'].join(' ');function setupFrameLoaded(){kindleSetupFrame.style.display='block';hideLoading();unlisten('load',kindleSetupFrame,setupFrameLoaded);}
+listen('load',kindleSetupFrame,setupFrameLoaded);}
+function hideKindleSetup(){document.getElementById(kindleFrameId).style.display='none';}
+messageCallbacks={""queue_success"":function(args){showLoading('Saved');window.setTimeout(function(){hideLoading();},1000);},""send_to_kindle_success"":function(args){showLoading('Sent');window.setTimeout(function(){hideLoading();},1000);},""send_to_kindle_failure"":function(args){alert(""Sorry, we were unable to send this article to your Kindle. ""+""Support has been contacted automatically to resolve this issue."");hideLoading();},""show_kindle_setup"":function(args){showKindleSetup();},""kindle_setup_success"":function(args){hideLoading();hideKindleSetup();if(args.sendArticle!==false){sendToKindle();}},""kindle_setup_cancelled"":function(args){hideLoading();hideKindleSetup();}};function receiveMessage(event){var eventObject,eventName,eventArgs;try{eventObject=JSON.parse(event.data);}catch(e){return false;}
+if(typeof eventObject!==""object""){return false;}
+eventName=eventObject.event;eventArgs=eventObject.args;if(typeof messageCallbacks[eventName]!==""undefined""){return messageCallbacks[eventName](eventObject.args);}}
+function minify(doc_node){var i,il,html,preTags=doc_node.getElementsByTagName('pre');for(i=0;i<preTags.length;i++){preTags[i].innerHTML=preTags[i].innerHTML.replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;').replace(/\n/g,'--rdb-newline--');}
+html=""<html>""+doc_node.innerHTML+""</html>"";html=html.replace(/[\s\t\r\n]+/g,' ');html=html.replace(/<!--.*?-->/g,'');html=html.replace(/--rdb-newline--/g,""\n"");for(i=0;i<preTags.length;i++){preTags[i].innerHTML=preTags[i].innerHTML.replace(/--rdb-newline--/g,""\n"")}
+html=html.replace(/<script\b[^>]*>(.*?)<\/script\s*>/gi,'');return html;}
+function getFrame(){var f;try{f=document.createElement('<iframe name=""'+frameId+'"">');}catch(ex){f=document.createElement('iframe');}
+f.setAttribute('id',frameId);f.setAttribute('name',frameId);f.setAttribute('allowTransparency','true');f.style.cssText='display: none;';return f;}
+function getForm(url){var f=document.createElement('form');f.setAttribute('id',formId);f.setAttribute('action',url);f.setAttribute('accept-charset',charset);f.setAttribute('enctype','application/x-www-form-urlencoded');f.setAttribute('method','post');return f;}
+function submitForm(postUrl,postToFrame,extraInputs){var inputKey,formInputs,newInput,postFrame,postForm=getForm(postUrl);if(postToFrame){postFrame=getFrame();document.body.appendChild(postFrame);postForm.setAttribute('target',postFrame.getAttribute('name'));}
+document.body.appendChild(postForm);formInputs={""token"":token,""extensionType"":extensionType,""extensionVersion"":extensionVersion,""extensionBrowser"":extensionBrowser,""fromEmbed"":fromEmbed?1:0,""legacyBookmarklet"":legacyBookmarklet,""url"":readUrl,""doc"":docHtml,""charset"":charset};for(input in extraInputs){if(extraInputs.hasOwnProperty(input)){formInputs[input]=extraInputs[input];}}
+for(inputKey in formInputs){if(formInputs.hasOwnProperty(inputKey)&&typeof formInputs[inputKey]!=='undefined'){newInput=document.createElement('input');newInput.setAttribute('type','hidden');newInput.setAttribute('name',inputKey);newInput.setAttribute('value',formInputs[inputKey]);postForm.appendChild(newInput);}}
+window.setTimeout(function(){postForm.submit();},50);}
+function read(){showLoading('Converting',true);submitForm(readPostUrl,false,{""read"":1});}
+function save(){showLoading('Saving',true);if(optedOut){window.location=(failUrl+'?url='+encodeURIComponent(window.location.href)+'&reason=opt-out');return;}
+submitForm(savePostUrl,true,{""read"":0});return;}
+function sendToKindle(){showLoading('Sending',true);submitForm(sendToKindleUrl,true,{});}
+function print(){showLoading('Converting',true);submitForm(readPostUrl,false,{""read"":1,""print"":1});}
+function init(){token=typeof window.readabilityToken===""undefined""?"""":window.readabilityToken;extensionType=typeof window.readabilityExtensionType===""undefined""||window.readabilityExtensionType===""""?'bookmarklet':window.readabilityExtensionType;extensionVersion=typeof window.readabilityExtensionVersion===""undefined""||window.readabilityExtensionVersion===""""?""1"":window.readabilityExtensionVersion;extensionBrowser=window.readabilityExtensionBrowser;legacyBookmarklet=typeof window.readStyle!==""undefined""?1:0;readUrl=getUrl();charset=document.characterSet||document.charset;formId='readability-form-'+(new Date()).getTime();frameId='readability-frame-'+(new Date()).getTime();kindleFrameId='readability-kindle-frame-'+(new Date()).getTime();articlePreviouslyValidated=(readUrl===referredArticleUrl&&referredArticleId!=='');listen(""message"",window,receiveMessage);listen(""unload"",window,hideLoading);if(!urlIsParsable(readUrl)){return false;}
+if(urlIsLocal(readUrl)){if(action===""send-to-kindle""&&document.getElementById('article-url')){readUrl=document.getElementById('article-url').getAttribute('href');}else{return false;}}
+if(!articlePreviouslyValidated&&readUrl===window.location.href){try{docHtml=minify(document.documentElement);}catch(e){docHtml='';}}
+if(docHtml.length>5242880){window.location=(failUrl+'?url='+encodeURIComponent(window.location.href)+'&reason=too-large');return false;}
+if(!savePost&&action===""save""){docHtml='';}
+switch(action){case'save':save();break;case'send-to-kindle':if(typeof window.readabilityKindleAction!==""undefined""&&window.readabilityKindleAction===""showSetup""){showLoading('Loading',true);showKindleSetup();}else{sendToKindle();}
+break;case'print':print();break;default:if(document.location.hostname!=getHost(readUrl)){showLoading('Loading',true);document.location=readbarUrl+'?url='+encodeURIComponent(readUrl);return false;}
+read();break;}}
+return{""init"":init};}());window.rdb.bookmarklet.init();",Readibility Bookmarklet,
+new,"location=""https://www.queriac.com/users/zeke/commands/new"";",New Queriac Command,""
+edit,"window.location=""https://www.queriac.com/users/zeke/commands/""+args[0]+""/edit""",Edit Queriac Command,""
+ish,"/*
+Usage:
+ish devcenter               # github.com/heroku/devcenter/issues
+ish addons flash messages   # github.com/heroku/addons/issues/search?q=flash%20messages
+ish zeke/queriac2           # github.com/zeke/queriac2/issues
+ish defunkt/dotjs crx       # github.com/defunkt/dotjs/issues/search?q=crx
+*/
+
+// Assume github user is 'heroku' if no slash is present in first arg
+if (args[0].indexOf(""/"") == -1) {
+ args[0] = ""heroku/""+args[0]; 
+}
+
+// Anything after the repo name becomes a search query...
+q = (args.length > 1) ? ""/search?q=""+args.slice(1, args.length).join("" "") : """";
+
+window.location = ""https://github.com/"" + args[0] + ""/issues"" + q;",Heroku Github Issues,"Jump to the issues page for the specified repo, and optionally search it"
+desaturate,"(function(){function RGBtoHSL(RGBColor){with(Math){var R,G,B;var cMax,cMin;var sum,diff;var Rdelta,Gdelta,Bdelta;var H,L,S;R=RGBColor[0];G=RGBColor[1];B=RGBColor[2];cMax=max(max(R,G),B);cMin=min(min(R,G),B);sum=cMax+cMin;diff=cMax-cMin;L=sum/2;if(cMax==cMin){S=0;H=0;}else{if(L<=(1/2))S=diff/sum;else S=diff/(2-sum);Rdelta=R/6/diff;Gdelta=G/6/diff;Bdelta=B/6/diff;if(R==cMax)H=Gdelta-Bdelta;else if(G==cMax)H=(1/3)+Bdelta-Rdelta;else H=(2/3)+Rdelta-Gdelta;if(H<0)H+=1;if(H>1)H-=1;}return[H,S,L];}}function getRGBColor(node,prop){var rgb=getComputedStyle(node,null).getPropertyValue(prop);var r,g,b;if(/rgb\((\d+),\s(\d+),\s(\d+)\)/.exec(rgb)){r=parseInt(RegExp.$1,10);g=parseInt(RegExp.$2,10);b=parseInt(RegExp.$3,10);return[r/255,g/255,b/255];}return rgb;}function hslToCSS(hsl){return ""hsl(""+Math.round(hsl[0]*360)+"", ""+Math.round(hsl[1]*100)+""%, ""+Math.round(hsl[2]*100)+""%)"";}var props=[""color"",""background-color"",""border-left-color"",""border-right-color"",""border-top-color"",""border-bottom-color""];var props2=[""color"",""backgroundColor"",""borderLeftColor"",""borderRightColor"",""borderTopColor"",""borderBottomColor""];if(typeof getRGBColor(document.documentElement,""background-color"")==""string"")document.documentElement.style.backgroundColor=""white"";revl(document.documentElement);function revl(n){var i,x,color,hsl;if(n.nodeType==Node.ELEMENT_NODE){for(i=0;x=n.childNodes[i];++i)revl(x);for(i=0;x=props[i];++i){color=getRGBColor(n,x);if(typeof(color)!=""string""){hsl=RGBtoHSL(color);hsl[1] = 0;n.style[props2[i]]=hslToCSS(hsl);}}}}})()",Desaturate the Page,""
+yelp,"var loc = loc || 94110; // SF Mission
+window.location=""http://www.yelp.com/search?find_loc=""+loc+""&find_desc=""+args.join("" "");",Yelp Search,""
+pin,"void(
+  (function(){
+    var e=document.createElement('script');
+    e.setAttribute('type','text/javascript');
+    e.setAttribute('charset','UTF-8');
+    e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
+    document.body.appendChild(e);
+  })()
+);",Pin to Pinterest,""
+jquerify,"(function(){
+  var s=document.createElement('script');
+  s.setAttribute('src','https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();",Inject jQuery into the current page,""
+qr,"var base_url = 'http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=';
+var this_url = encodeURIComponent(location.href);
+var title = ""QR%20Code""
+var options = 'top=100,left=200,width=350,height=350,status=yes';
+window.open(base_url+this_url, title, options);",Generate QR code for Current URL,""
+u,"(function(){
+  var d=document,j=d.getElementById('__cornify_nodes'),k=null;
+  var files=['http://cornify.com/js/cornify.js','http://cornify.com/js/cornify_run.js'];
+  if(j){
+    cornify_add();
+  } else {
+    k=d.createElement('div');
+    k.id='__cornify_nodes';
+    d.getElementsByTagName('body')[0].appendChild(k);
+    for(var l=0; l<files.length; l++) {
+      j=d.createElement('script');
+      j.src=files[l];
+      k.appendChild(j);
+    }
+  }
+})();",Cornify,Add some unicorns.
+deck,"(function(){
+  var s=document.createElement('script');
+  s.setAttribute('src','https://gistdeck.herokuapp.com/gistdeck.js');
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();",GistDeck,""
+g,window.location='http://google.com/search?q='+args.join(' ');,Google Search,""
+headers,console.log($('h1'));,h1,""
+t,http://twitter.com/home,Twitter Shortcut,Just a quick jump to Twitter Home.
+h,chrome://history/#q=(q),Search Local Chrome History,Search your Google Chrome browsing history
+tiny2,javascript:void(location.href='http://tinyurl.com/create.php?url='+location.href),Generate TinyURL,"Are you sick of posting URLs in emails only to have it break when sent causing the recipient to have to cut and paste it back together? Then you've come to the right place. By entering in a URL in the text field below, we will create a tiny URL that will not break in email postings and never expires.
+
+Use this bookmarklet to generate a TinyURL on the fly."
+cache,"javascript:void((function(){var a=location.href.replace(/^http%5C:%5C/%5C/(.*)$/,""$1"");location.href=""http://www.google.com/search?q=cache:""+escape(a);})())",View Google's Cache for the Current URL,""
+cto,https://mail.google.com/mail/?view=cm&ui=2&tf=0&fs=1&to=(q),Gmail - Compose Message to Recipient,"Open a Gmail compose window to specified recipient(s). The page loads a little faster than it does for the non-parametric 'c' command, because it doesn't load up the full Gmail interface, but rather a simple compose window."
+hipsum,http://hipsteripsum.me/?paras=4&type=hipster-centric,Hipster Ipsum | Artisanal filler text for your site or project.,""
+sniph,"window.location=""http://sniphr.com/sniphs?q=""+args.join("" "");",Sniphr Search,""
+addon,"location=""https://addons.heroku.com/marketplace/addons/""+args[0];",Heroku Addon Search,Jump to a heroku addon page by permalink/slug
+sig,"location=""http://zeke.sikelianos.com/vault/docs/ids_and_signatures/Zeke%27s%20Signature%2001.gif""",My Signature,""
+rdio,http://www.rdio.com/#/search/(q),Rdio Search,""
+later,"function iprl5() {
+  var d = document,z = d.createElement('scr' + 'ipt'),b = d.body;
+  try {if (!b) throw (0);
+    d.title = '(Saving...) ' + d.title;
+    z.setAttribute('src', 'https://www.instapaper.com/j/wvWqxRLQN0yY?u=' + encodeURIComponent(d.location.href) + '&t=' + (new Date().getTime()));
+    b.appendChild(z);
+  } catch(e) {
+    alert('Please wait until the page has loaded.');
+  }
+}
+iprl5();
+void(0);",Save for Later with Instapaper,"A fast, easy, free tool to save web pages for reading later."
+ecm,"window.location=""https://secure.earthclassmail.com/login.aspx""",Earth Class Mail,""
+unread,"window.location=""http://www.instapaper.com/u"";",Instapaper - Unread,Open your unread Instapaper links
+iten,"window.location-""http://www.wordreference.com/iten/""+args.join("" "");",Translate Italian to English (WordReference.com),""
+bitly,"var e=document.createElement('script');
+e.setAttribute('language','javascript');
+e.setAttribute('src','http://bit.ly/bookmarklet/load.js');
+document.body.appendChild(e);void(0);",Generate bit.ly URL for the Current Page,A new and improved alternative to TinyURL. Use bit.ly to generate a shorter version of the current URL.
+anagram,http://www.ssynth.co.uk/~gay/cgi-bin/nph-an?words=1&dict=antworth&doai=on&line=(q),Anagram Solver,"An anagram is a type of word play, the result of rearranging the letters of a word or phrase to produce a new word or phrase, using all the original letters exactly once; e.g., orchestra = carthorse. Use this command to solve them!"
+bing,"window.location=""http://www.bing.com/search?q=""+args.join("" "");",Bing Search,Bing's a new search engine from Microsoft that's getting a lot of attention.
+bi,"window.location=""http://www.bing.com/images/search?q=""+args.join("" "");",Bing Image Search,"Bing is a new search engine from Microsoft. The web search is pretty standard, but the image search has some nice features that set it apart from Google, Yahoo, and the others."
+cost,"if (args.length > 0) {
+	location=""http://followcost.com/""+args[0];  
+} else if (location.host === ""twitter.com"") {
+  var user = location.pathname.split(""/"")[1];
+  if (user && user.length > 0) {
+	location=""http://followcost.com/""+args[0];  
+  }
+}",Get the 'Follow Cost' for a Twitter User,"follow cost measures how much people tweet. We use an absolute scale (average number of tweets per day) but also measure tweets in milliscobles, or 1/1000th of Robert Scoble's Twitter output.
+
+Usage
+cost zeke
+cost MCHammer"
+gists,window.location='http://gist.github.com/mine';,GitHub - My Gists,""
+bt,"location.href='http://www.backtype.com/connect/'+encodeURIComponent(location.href.substring(7).replace(new%20RegExp('/','g'),'%252f'))+'&referrer';",BackType the Current Page,"BackType is a service that lets you find, follow and share comments from across the web. Whenever you fill out the ""Website"" or ""URL"" field in a comment form when you publish a comment on a blog or other website, BackType attributes it to you. We give comment authors a profile featuring all the comments they've written on the Internet. If you don't have a website to use when you fill out comment forms, sign up and use one of ours."
+sun,http://www.calendar-updates.com/sun.asp?PostalCode=(q),Sunrise & Sunset Times by Zip Code,Get today's sunrise and sunset times by entering your zip zode.
+prose,http://jonathanaquino.com/austen.php?sentences=(q),Prose Generator,"Generates a random collection of sentences (defaults to 3), presumably from some antiquarian novel.."
+zap2,"javascript:javascript:(function(){var%20d=document,i=0,l,em=0,ed,b=d.body,w=window,sl=[],hid=[],$=b.getElementsByTagName('*'),cTp=(d.all&&!w.opera)?'absolute':'fixed',css=d.createElement('style');css.type='text/css';css.media='all';var%20cT='#mPp{font-size:15px;padding:5px;background:#fdd;color:#000;position:'+cTp+';top:0;right:0;zIndex:1000;text-align:right}#mPp:hover{padding:.5em;line-height:1.6;}#mPp:hover%20u{display:none}#mPp%20i{display:none;text-align:left;cursor:default;color:#000}#mPp:hover%20i{display:block}#mPp%20b{border:1px%20outset%20#000;background:#fff;color:#666;padding:0%202px;margin-right:4px}#mPe{position:absolute;left:0;right:0;padding:5px%2010px;background:#fdd;text-align:left}#mPe%20textarea{width:99%;display:block}'+'.mPs,.mPs%20*{background:#ff0;color:#000;}.mPh{background:#ffc;}.mPi,.mPi%20*{background:#fff;width:auto;float:none;margin:1em%200;padding:0;}body.mPi{text-align:left;margin:0;}'.replace(/;/g,'%20!important;');if(css.styleSheet)css.styleSheet.cssText=cT;else%20css.appendChild(d.createTextNode(cT));d.getElementsByTagName('head')[0].appendChild(css);function%20nB(e){if(!e)var%20e=w.event;e.cancelBubble=true;if(e.stopPropagation)e.stopPropagation()}function%20over(e){nB(e);!em&&!this.isSel&&changeCn(this,'mPh')}function%20out(e){nB(e);!em&&!this.isSel&&changeCn(this)}function%20clik(e){nB(e);!em&&this.isSel?unSel(this):sel(this);return%20false}while(l=$.item(i++)){addEvents(l)}var%20h=d.createElement('a');h.id='mPp';h.href='http://mrclay.org/';h.innerHTML='<u>?</u><i><b>R</b>emove%20Selected</i><i><b>U</b>ndo%20Remove</i><i><b>I</b>solate%20Selected</i><i><b>P</b>rint%20Preview</i><i><b>W</b>iden%20Selected</i><i><i><b>B</b>ackwards</i><b>N</b>ext</i><i><b>D</b>eselect</i><i><b>C</b>opy%20Element</i><i><b>E</b>dit%20HTML</i><i><b>Esc</b>ape/Quit</i>';h.onclick=function(e){nB(e)};b.appendChild(h);d.onkeydown=function(e){var%20ls=sl.length?sl[sl.length-1]:0;if(!e)var%20e=window.event;if(e.keyCode==27){rm(h);rm(css);i=0;while(l=$.item(i++)){l.onmouseover=l.oldOnmouseover||null;l.onmouseout=l.oldOnmouseout||null;l.onclick=l.oldOnclick||null;l.oldOnmouseover=null;l.oldOnmouseout=null;l.oldOnclick=null}d.onkeydown=null;em&&rm(ed)}if(em)return%20true;switch(e.keyCode){case%2082:while(sl.length){ls=sl[sl.length-1];ls.style.display='none';unSel(ls);hid.push(ls)}break;case%2073:sel(h);while(b.hasChildNodes())b.removeChild(b.firstChild);while(sl.length){b.appendChild(sl[0]);unSel(sl[0])}break;case%2087:if(ls){unSel(ls);(ls!=b)&&sel(ls.parentNode)}break;case%2080:pp();break;case%2068:unSel(ls);break;case%2085:hid.length&&(hid.pop().style.display='');break;case%2069:ls&&ls.innerHTML&&edit(ls);break;case%2066:if(ls){l=d.getElementsByTagName('*').item(getSourceIndex(ls)-1);if(l&&l!=b){unSel(ls);sel(l)}}break;case%2078:if(ls){l=d.getElementsByTagName('*').item(getSourceIndex(ls)+1);if(l&&l!=h){unSel(ls);sel(l)}}break;case%2067:if(ls){l=ls.cloneNode(true);if(ls.id){l.id+='_copy'}ls.parentNode.insertBefore(l,ls.nextSibling);addEvents(l);i=0;var%20desc;while(desc=l.getElementsByTagName('*').item(i++))addEvents(desc);unSel(ls);sel(l)}break;default:return%20true}return%20false};function%20rm(l){l.parentNode.removeChild(l)}function%20changeCn(l,cN){l.className=l.className.replace(/\bmP[hs]\b/g,'');if(cN)l.className+=l.className?'%20'+cN:cN}function%20sel(l){changeCn(l,'mPs');l.isSel='1';sl.push(l)}function%20unSel(l){changeCn(l);l.isSel='';for(var%20i=0,len=sl.length;i<len;i++){if(sl[i]==l){sl.splice(i,1);return}}}function%20edit(l){em=1;var%20left=0,top=0,tmp=l,chg=0;if(tmp.offsetParent){while(tmp.offsetParent){left+=tmp.offsetLeft;top+=tmp.offsetTop;tmp=tmp.offsetParent}}ed=d.createElement('div');ed.id='mPe';b.appendChild(ed);ed.style.top=(top+l.offsetHeight+5)+'px';unSel(l);var%20oh=getOuterHTML(l).replace(/^\s*|\s*$/g,'').replace(/%20isSel[<>]*\u003E/g,'>').replace(/%20class=""""(?=[^<>]*>)/g,'');sel(l);var%20rows=Math.min(15,oh.split('\n').length+3);ed.innerHTML='<textarea%20id=mPta%20rows='+rows+'></textarea><button%20id=mPbu>done</button>';d.getElementById('mPta').value=oh;d.getElementById('mPta').onchange=function(){chg=1};function%20finEdit(){unSel(l);em=0;if(chg){var%20tmp=b.appendChild(d.createElement('div'));tmp.innerHTML=d.getElementById('mPta').value;i=0;var%20desc;while(desc=tmp.getElementsByTagName('*').item(i++))addEvents(desc);while(tmp.hasChildNodes())l.parentNode.insertBefore(tmp.firstChild,l);rm(l);rm(tmp)}rm(ed)}d.getElementById('mPbu').onclick=d.getElementById('mPbu').onkeypress=finEdit}function%20addEvents(l){if('String'!=typeof%20l.isSel){l.isSel='';l.oldOnmouseover=l.onmouseover;l.oldOnmouseout=l.onmouseout;l.oldOnclick=l.onclick;l.onmouseover=over;l.onmouseout=out;l.onclick=clik}}function%20getSourceIndex(l){if(l.sourceIndex)return%20l.sourceIndex;i=0;var%20el;while(el=d.getElementsByTagName('*').item(i)){if(el==l)return%20i;++i}}function%20getOuterHTML(l){if(l.outerHTML)return%20l.outerHTML;var%20dv=d.createElement('div');dv.appendChild(l.cloneNode(true));return%20dv.innerHTML}function%20pp(){var%20i=0,m,ss=d.styleSheets,wk=/webkit/i.test(navigator.userAgent);if(ss&&!wk){for(i=0;i<ss.length;i++){m=ss[i].media;if(m.mediaText)m.mediaText=media(m.mediaText);else%20ss[i].media=media(m)}}else{ss=[];var%20r,l;while(l=d.getElementsByTagName('link').item(i++)){r=l.getAttribute('rel');if(r&&/^style/i.test(r))ss.push(l)}i=0;while(l=d.getElementsByTagName('style').item(i++))ss.push(l);for(i=ss.length-1;i>=0;i--){if(wk)handleWk(ss[i]);else%20ss[i].media=media(ss[i].media)}}function%20media(m){return(m=='all')?m:(/projection/.test(m))?'print':(/speech/.test(m))?'screen':(/print/.test(m))?'screen,print,projection':'speech'}function%20handleWk(l){if(/print/.test(l.media)){var%20n=l.cloneNode(true);n.media='screen';l.parentNode.appendChild(n)}else%20if(/screen/.test(l.media)){l.disabled=true}}}})();",MyPage (Click2Zap Improved),"MyPage puts you in control of the current page: Remove, isolate, edit page items with keyboard control. On-screen print-preview emulation lets you see how the page will print while editing.
+
+Usage
+- Click to select/deselect elements (can select multiple)
+- Perform actions via keyboard (mouse over [?] in the top right corner)
+
+R - Remove selected element(s)
+U - Undo removal
+I - Isolate selected elements (removes everything else!) 
+P - Print-Preview (wonâ€™t be 100% accurate, but itâ€™s faster than native print-preview on any browser Iâ€™ve used, and you can even reverse it in IE, FF & Opera. This is perfect for adjusting pages for print)
+W - Widen last selected element (a selected table cell becomes a selected table row, etc.)
+B - Backwards (move selection to the previous element) 
+N - Next (move selection to the next element)
+D - Deselect all
+C - Copy the last selected element (duplicate is placed directly after the original) 
+E - Edit HTML (of the last selected element)
+Esc - Escape/Quit
+
+Found at http://mrclay.org/index.php/2006/04/23/mypage-bookmarklet/"
+avatar,http://www.flickr.com/photos/sikelianos/3322146088/,My Avatar,""
+tiling,"window.location=""http://www.flickr.com/photos/sikelianos/sets/72157594233031615/"";",Tiling Backgrounds - a set on Flickr,A Flickr collection of tiling background images.
+hrefs,"(function() {
+    var i,
+    c, x, h;
+    for(i = 0; x = document.links[i]; ++i)  {
+      h = x.getAttribute(""href"");
+      x.title += "" "" + x.innerHTML;
+      while(c = x.firstChild) x.removeChild(c);
+      x.appendChild(document.createTextNode(h)); 
+    } 
+})()",Show Link HREFs,Changes the text of links to match their hrefs.
+nypl,http://digitalgallery.nypl.org/nypldigital/dgkeysearchresult.cfm?keyword=(q),NYPL Digital Gallery Search,"NYPL Digital Gallery provides access to over 600,000 images digitized from primary sources and printed rarities in the collections of The New York Public Library, including illuminated manuscripts, historical maps, vintage posters, rare prints  and photographs, illustrated books, printed ephemera, and more."
+starred,"window.location=""http://mail.google.com/mail/?search=query&view=tl&start=0&init=1&fs=1&q=is%3Astarred"";     ",Starred Gmail,""
+sigma,"window.location=""https://github.com/heroku/sigma/search?q=""+args.join("" "");",Heroku Sigma Search,Sigma collects all of heroku's platform technical documentation from individual code repositories and wikis on Github into a single Git repository that is searchable via the built-in Github web interface.
+duck,"window.location=""http://duckduckgo.com/?q=""+args.join("" "");",Duck Duck Go,"DuckDuckGo is a search engine, like Google."
+dev,"window.location=""https://devcenter.heroku.com/articles?q=""+args.join("" "");",Heroku Dev Center,""
+fup,"window.location=""http://flickr.com/photos/upload/"";",Flickr Upload Page,Just a quick hop to the Flickr Upload page.
+charts,http://www.last.fm/user/(q)/charts/?charttype=recenttracks,Last.fm Charts - User Search,"Show recent listening history for a last.fm user
+
+Usage
+lu sikelianos"
+n,"window.location=""http://www.wordnik.com/words/""+args.join("" "");",Wordnik Search,An ongoing project devoted to discovering all the words and everything about them.
+tspy,http://www.torrentspy.com/search.asp?query=(q),TorrentSpy Quicksearch,""
+archive,http://www.archive.org/search.php?query=(q),Archive.org Quicksearch,"The Internet Archive (IA) is a non-profit organization dedicated to maintaining an on-line library and archive of Web and multimedia resources. Located at the Presidio in San Francisco, California, this archive includes ""snapshots of the World Wide Web"" (archived copies of pages, taken at various points in time), software, movies, books, and audio recordings."
+bay,"window.location=""http://thepiratebay.org/search/""+args.join("" "");",Pirate Bay Search,"The Pirate Bay is a Swedish website that indexes and tracks BitTorrent (""torrent"") files. It bills itself as ""the world's largest BitTorrent tracker""[1] and is ranked as the 98th most popular website by Alexa Internet.[2] The website is primarily funded with advertisements shown next to torrent listings. Initially established in November 2003 by the Swedish anti-copyright organization PiratbyrÃ¥n (""The Piracy Bureau""), it has been operating as a separate organization since October 2004."
+gface,"window.location=""http://images.google.com/images?imgtype=face&q=""+args.join("" "");",Google Images Face Search,"When you add &imgtype=face to the picture search string, only photos with faces are showing up. This feature has not been officially announced yet and I have no idea how reliable it works.
+
+See http://lifehacker.com/software/url-hacking/google-enables-face-recognition-in-image-search-264331.php"
+de,http://dict.tu-chemnitz.de/dings.cgi?lang=en&service=deen&query=(q),Translate English to German or German to English (Beolingus),"Enter a term in German or English.. it translates in both directions simultaneously. A little history.. Since 1995 our online dictionary has offered you German <> English translations: fast, efficient, user-friendly and, of course, free. We chose the BEO (German for Hill Myna) as our symbol, because this amazing bird is a very communicative one, gathering and imitating words and noises. The word ""Beo"" comes from Indonesia and means ""chatterbox"". In South-Eastern Asia, the Beo is well known as a really communicative buddy, which talks a lot to its companions."
+gmp3,http://www.google.com/search?complete=1&q=-inurl:htm%20-inurl:html%20intitle:%22index%20of%22%20mp3%20%22(q)%22,Google MP3 Search,"Use google to find what appear to be Apache Indexes of mp3 files, containing an ""Index of"" header."
+hl,"javascript:(function(){var count=0, text, dv;text=""(q)"";if(text==null || text.length==0)return;dv=document.defaultView;function searchWithinNode(node, te, len){var pos, skip, spannode, middlebit, endbit, middleclone;skip=0;if( node.nodeType==3 ){pos=node.data.toUpperCase().indexOf(te);if(pos>=0){spannode=document.createElement(""SPAN"");spannode.style.backgroundColor=""yellow"";middlebit=node.splitText(pos);endbit=middlebit.splitText(len);middleclone=middlebit.cloneNode(true);spannode.appendChild(middleclone);middlebit.parentNode.replaceChild(spannode,middlebit);++count;skip=1;}}else if( node.nodeType==1&& node.childNodes && node.tagName.toUpperCase()!=""SCRIPT"" && node.tagName.toUpperCase!=""STYLE""){for (var child=0; child < node.childNodes.length; ++child){child=child+searchWithinNode(node.childNodes[child], te, len);}}return skip;}window.status=""Searching for '""+text+""'..."";searchWithinNode(document.body, text.toUpperCase(), text.length);window.status=""Found ""+count+"" occurrence""+(count==1?"""":""s"")+"" of '""+text+""'."";})();",Highlight a Search String on the Current Page,"When run, this bookmarklet will highlight all instances of your query on the current page with a yellow background. At the moment, there's a not way to clear the highlighting.
+
+Usage: j hl dog"
+a,"window.location=""http://www.amazon.com/s/ref=nb_sb_noss_2?field-keywords=""+args.join("" "");",Search Amazon,Searches all of amazon.com
+qtag,http://queri.ac/queries/tag/(q),Search all Queriac Queries by Tag,""
+gsel,window.location='http://www.google.com/search?q='+window.getSelection();,Google Search the Current Selection,"Perform a Google search on the selected text on the current page.
+
+Remember: This is a bookmarklet, so calls to it must be run from your javascript bookmarklet."
+yim,javascript:document.location.href='ymsgr:sendIM?(q)',Yahoo Messenger: New Message to Buddy,""
+gim,javascript:document.location.href='gtalk:chat?jid=(q)',gTalk: New Message to Buddy,""
+aim,javascript:document.location.href='aim:goim?screenname=(q)',AIM: New Message to Buddy,""
+fu,window.location='http://flickr.com/photos/'+args[0];,Flickr User Quickjump,""
+wolf,http://www53.wolframalpha.com/input/?i=(q),Wolfram|Alpha,"Wolfram|Alpha is a computational knowledge engine: it generates output by doing computations from its own internal knowledge base, instead of searching the web and returning links. For examples, see http://www53.wolframalpha.com/examples/"
+queue,http://www.netflix.com/Queue,Netflix Queue,""
+zip,http://zipskinny.com/index.php?zip=(q),ZipSkinny - Zip Code Info,Get demographic information for US zip codes
+def,http://www.google.com/search?hl=en&lr=&oi=definel&defl=all&q=define: (q),Google Multilanguage Define,Provides definitions to your query in multiple languages.
+tweet,http://twitter.com/statuses/update.xml?status=(q),Tweet to Twitter,Post to twitter right from the address bar.
+flick,"t = '';
+for (var n = 0; n < document.images.length; n++) {
+    t += '<a href=/ onclick=\'document.f.url.value=document.images[' + n + '].src;document.f.submit();return false;\'><img border=0 src=' + document.images[n].src + '></a><br>';
+};
+if (t != '') {
+  document.write('\<p\>Click an image to add it to your photostream\</p\>\<form name=f action=http://www.flickr.com/tools/sendto.gne method=get\>\<input type=hidden name=url\>\</form\>' + t + '');
+  void(document.close())
+} else {
+  alert('No images!');
+}",Send to Flickr,"From the page containing the image you want to upload to flickr, run the command and it will list all images on that page. Click the image you want to upload. Login to Flickr if it asks you to. Choose ""Upload To Flickr"" button. Voila! Your file should be uploaded into your account on Flickr.
+
+Nabbed from http://www.transmit.net/vh/archives/2005/08/send_to_flickr_1.html"
+r1280mac,"javascript:resizeTo(1280,800)",Resize Browser Window to 1280x800,""
+bw,location.href='http://builtwith.com?'+location.href;,Open BuiltWith Profile for Current Page,"What's that site running? Use BuiltWith to discover the application framework, language and CMS tools behind a website. "
+gist,"window.location=""http://gist.github.com/"";",Github - Create a new Gist,"Weâ€™d love versioning. Weâ€™d love SSL on our private pastes. Weâ€™d love to fork existing pastes. And you know what, weâ€™d love to push and pull our pastes using Git. Well, say hello to Gist."
+last,http://www.last.fm/music/?q=(q),Last.fm Music Search,Search Last.fm
+moby,"location=""http://www.dict.org/bin/Dict?Form=Dict1&Strategy=*&Database=moby-thes&Query=""+args.join("" "");",Moby Thesaurus at dict.org,"The Moby Thesaurus II contains 30,260 root words, with 2,520,264 synonyms and related terms - an average of 83.3 per root word. Each line consists of a list of comma-separated values, with the first term being the root word, and all following words being related terms.
+
+More info at http://en.wikipedia.org/wiki/Moby_Project"
+fox,https://addons.mozilla.org/en-US/firefox/search?q=(q)&cat=all,Firefox Add-ons Search,"Add-ons extend Firefox, letting you personalize your browsing experience. Take a look around and make Firefox your own."
+powells,"window.location=""http://www.powells.com/s?kw=""+args.join("" "");",Powell's Book Search,"Powell's Books, with seven different locations, is in the Portland metropolitan area (with roots in Chicago, Illinois). Powell's headquarters location, Powell's City of Books, claims to be the largest independent new and used bookstore in the world.
+
+http://en.wikipedia.org/wiki/Powell%27s_Books"
+fts,http://flickr.com/search/?w=all&q=(q)&m=tags,Flickr Tag Search (Everyone's Photos),""
+count,"javascript:(function()%7Bvar%20T=%7B%7D,W=%5B%5D,C=0,s,i;%20function%20F(n)%7Bvar%20i,x,a,w,t=n.tagName;if(n.nodeType==3)%7Ba=n.data.toLowerCase().split(/%5B%5Cs%5C(%5C)%5C:%5C,%5C.;%5C%3C%5C%3E%5C&%5C'%5C%22%5D/),i;for(i%20in%20a)if(w=a%5Bi%5D)%7Bw=%22%2",Word Count,""
+sniff,http://usniff.com/q/(q),usniff.com | Torrent search made easy,""
+iut,http://osx.iusethis.com/tag/(q),IUseThis.com OS X Tag Search,iusethis.com is a new way for you to organize your applications as well as discover new ones. You can also use it to check if your apps are up-to-date.
+ruen,http://www.wordreference.com/ruen/(q),Translate Russian to English,""
+babel,javascript:void(open('http://babelfish.yahoo.com/translate_url?doit=done&tt=url&intl=1&fr=bf-home&trurl='+encodeURIComponent(location.href)+'&lp=[:from]_[:to]&btnTrUrl=Translate'));,Translate Current Page with Babelfish,"Open the current page in a new window, translated with Babelfish. Takes standard two-character options for 'from' and 'to' languages.
+
+Example (Converts current page from Russian to English)
+j babel -f ru -t en"
+shared,http://zeke.sikelianos.com/shared/,http://zeke.sikelianos.com/shared/,""
+huge,http://words.bighugelabs.com/(q),Big Huge Thesaurus,"This site is based on source data from the Princeton University WordNet database, the Carnegie Mellon Pronouncing Dictionary, and suggestions from thousands of people on the internet just like you."
+istock,http://www.istockphoto.com/file_search.php?text=(q)&action=file,iStockphoto.com Search,""
+enru,http://www.wordreference.com/enru/(q),Translate English to Russian,""
+sets,"window.location=""http://www.flickr.com/photos/sikelianos/sets/"";",My Photosets on Flickr,""
+paris,"http://maps.google.com/maps/ms?hl=en&ie=UTF8&msa=0&msid=115099215088735124331.00000113078c8c9f11c37&ll=48.863134,2.3594&spn=0.044889,0.11158&z=14",Google Maps - Zeke Spots in Paris,""
+paris_markets,"http://maps.google.com/maps/ms?hl=en&ie=UTF8&msa=0&msid=115099215088735124331.000434b5375b280f734d0&ll=48.856358,2.34026&spn=0.044895,0.11158&z=14",Google Maps - Paris Markets,""
+provence,"http://maps.google.com/maps/ms?ie=UTF8&msa=0&msid=115099215088735124331.000457061f29bca7caf51&ll=43.866218,5.982056&spn=3.148344,7.141113&z=8","Google Maps - Zeke Spots in Provence, France",""
+wusht,https://wush.net/trac/[:project]/ticket/(q),Wush Ticket Quickjump,""
+jps,http://www.google.com/search?hl=en&q=site%3Aplugins.jquery.com+(q),jQuery Plugin Search,""
+du,http://delicious.com/(q),Delicious User Quickjump,Jump to a user's page on Delicious
+amazon_eric_meyer,http://www.amazon.com/exec/obidos/search-handle-url/index=blended&field-keywords=eric+meyer+css,Amazon.com: eric meyer css,temporary link for Eugenia
+verb2,http://humanities.uchicago.edu/orgs/ARTFL/forms_unrest/inflect.query.html,Verb Conjugation,""
+myth,http://www.pantheon.org/,encyclopedia mythica,"Most popular areas
+
+   1. Greek mythology
+   2. Norse mythology
+   3. Roman mythology
+   4. Celtic mythology
+   5. Greek people
+Welcome to the Encyclopedia Mythica
+
+Please enter the award-winning internet encyclopedia of mythology, folklore, and religion. Here you will find everything from A-gskw to Zveda Vechanyaya, with plenty in between.
+
+The mythology section is divided to six geographical regions: Africa, Americas, Asia, Europe, Middle East, and Oceania. Each region has many clearly defined subdivisions that will ease your search.
+The Folklore section contains general folklore, Arthurian legends, and fascinating folktales from many lands.
+
+In addition, we feature special interest areas to enhance and refine your research. A Bestiary, legendary heroes, an image gallery, and genealogical tables of various pantheons and prominent houses.
+
+To bring our entities to life, we have created an image gallery, where you will find hundreds of images of all kinds of deities, heroes, and strange creatures of every description.
+
+The encyclopedia will serve the serious researcher, the student, and the casual reader with equal success. Come in and enjoy! Think mythology, think EM!
+
+"
+gas3,http://www.google.com/search?q=site:http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3 (q),Google Search for Adobe's AS3 LiveDocs,"Adobe's LiveDocs servers are generally very slow, and there doesn't seem to be a way to restrict searches to a specific technology, but this Google search helps get past that, at least for AS3 documentation"
+book,http://www.bookfinder.com/search/?author=&lang=en&submit=Begin+search&new_used=*&destination=us&currency=USD&mode=basic&st=sr&ac=qr&title=(q),BookFinder.com Search by Title,"BookFinder.com is a one-stop ecommerce search engine that searches over 150 million books for saleâ€”new, used, rare, out-of-print, and textbooks. We save you time and money by searching every major catalog online, and letting you know which booksellers are offering the best prices and selection. When you find a book you like, you can buy it directly from the original seller; we never charge a markup."
+span,http://www.wordreference.com/es/translation.asp?tranword=&dict=enes&B10=Search,eng to span,eng to span word ref
+spen,http://www.wordreference.com/es/en/translation.asp?spen=,spanish to english ,span to eng word ref
+wref,http://www.wordreference.com/,word reference,"word reference, fren port span fren & just E"
+mf,http://flickr.com/search/?w=22863082%40N00&m=tags&q=(q),Flickr Tag Search (Sikelianos' Photos),""
+local,http://localhost:3000,Rails Localhost,""
+svn,https://wush.net/svn/(q)/,Wush Web-based SVN Browser Quickjump,""
+fv,http://machaut.uchicago.edu/?action=search&resource=conjugator&verb=(q),uChicago French Verb Conjugator,"- Enter a French verb (in the infinitive) and press the ""Conjugate"" button to see the forms of the verb for the tenses you have selected.
+- If you cannot enter accented characters directly, you may use the following symbols after the character in question to indicate an accent:
+
+\ for grave		a\ becomes Ã 
+/ for aigu	e/ becomes Ã©
+^ for circonflexe	e^ becomes Ãª
+, for cedille	c, becomes Ã§
+"" for trema	o"" becomes Ã¶"
+railsapi,http://api.rubyonrails.org/,Rails Framework Documentation,""
+age,javascript:alert(document.lastModified);,Show Current Page's Last Modified Date,Show the current page's lastModified date
+iuts,http://osx.iusethis.com/search?q=(q),IUseThis.com Search,iusethis.com is a new way for you to organize your applications as well as discover new ones. You can also use it to check if your apps are up-to-date.
+laen,http://arts.cuhk.edu.hk/cgi-bin/aglimpse-latin/16/www/Lexis/Latin?query=(q)&case=on&whole=on&errors=0,Latin to English Translation,"Translate Latin to English.
+
+Usage: laen mitis"
+zicons,http://zeke.sikelianos.com/vault/assets/icons/v_bundle/search.html,My Icon Collection,""
+nova,http://www.mininova.org/search/?search=(q),Mininova Torrent Search,"Mininova is one of the largest torrent listing sites. The site started in January 2005 as a successor to the (at that time very popular) Suprnova.org, which went offline at the end of 2004 due to legal issues. It is a directory and search engine for many kinds of torrent files."
+hours,http://dashboard.elctech.com/time_entries,ELC Work Log,""
+essyn,http://www.wordreference.com/sinonimos/(q),Spanish Synonyms,""
+dash,http://dashboard.elctech.com/,ELC Dashboard,""
+passwords,"javascript:(function(){var s,F,j,f,i; s = %22%22; F = document.forms; for(j=0; j<F.length; ++j) { f = F[j]; for (i=0; i<f.length; ++i) { if (f[i].type.toLowerCase() == %22password%22) s += f[i].value + %22\n%22; } } if (s) alert(%22Passwords in forms on t",View Passwords,""
+agent,javascript:document.write(navigator.userAgent),User Agent Info,""
+promo,void(open('http://retailmenot.com/view/'+encodeURIComponent(document.domain)));,Find RetailMeNot Codes for Current Domain,"RetailMeNot.com is an easy way to find online coupon codes. Enter these codes at the checkout page of participating merchants for instant discounts.
+
+current-window version: javascript:location.href='http://retailmenot.com/view/'+encodeURIComponent(document.domain)"
+oed,http://dictionary.oed.com/cgi/findword?query_type=word&queryword=(q),OED Quicksearch,You need to have an account with them to use this service.
+scrabble,http://spod.cx/cheat-o-matic.shtml?letters=(q)&dict=sowpods&Cheat=Cheat,Scrabble Cheat-o-Matic,"To use the Scrabble cheat-o-matic, enter the letters you have below. Add any additional letters of places on the board that look promising to get a list of all the possible words that you can play. The Scrabble cheat-o-matic only handles single blank tiles, so in the unlikely event you have both blanks, tough. To enter a blank tile, use the _ (underscore) character."
+repo,"/*
+Usage:
+repo addons
+repo defunkt/dotjs
+*/
+
+// Assume user is 'heroku' if no slash is present in first arg
+if (args[0].indexOf(""/"") == -1) {
+ args[0] = ""heroku/""+args[0]; 
+}
+
+window.location = ""https://github.com/""+args[0];",GitHub Project Quickjump,"Jump to a Github project.
+
+    gp foo
+    gp foo u:bob
+    gp u:bob p:jquery"
+df,http://dafont.com/en/search.php?q=(q),DaFont Quicksearch,""
+sxc,http://www.sxc.hu/browse.phtml?txt=(q)&f=search&w=1,Stock.Xchng,Huge collection of free/cheap stock photography.
+last_artist,http://www.last.fm/music/(q),Last.fm - Jump to Artist,"Jump to an artist on Last.fm
+
+Usage
+artist Pink Anderson"
+yi,http://images.search.yahoo.com/search/images?p=(q),Yahoo Images Search,""
+cookies,"javascript:alert('Cookies%20stored%20by%20this%20host%20or%20domain:%5Cn%5Cn'%20+%20document.cookie.replace(/;%20/g,'%5Cn'));",View Cookies,""
+whois,"window.location=""http://www.networksolutions.com/whois/results.jsp?domain=""+encodeURIComponent(document.domain);",Whois Lookup,"WHOIS is a TCP-based query/response protocol which is widely used for querying a database in order to determine the owner of a domain name, an IP address, or an autonomous system number on the Internet. WHOIS lookups were traditionally made using a command line interface, but a number of simplified web-based tools now exist for looking up domain ownership details from different databases. Web-based WHOIS clients still rely on the WHOIS protocol to connect to a WHOIS server and do lookups, and command-line WHOIS clients are still quite widely used by system administrators."
+icons,http://www.iconfinder.net/index.php?q=(q),Iconfinder Search,""
+ghistory,http://www.google.com/history/find?q=(q),Google - Web History,"If you let it, Google archives your search history. Use this command to search your search history. How meta!"
+pukka,javascript:document.location.href='pukka:url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)+'&extended='+encodeURIComponent(window.getSelection());,Open Pukka for Current Page,"Pukka is a minimalist client for del.icio.us. Fire it up and within seconds you can easily post to one or more del.icio.us accounts. Think of it as a mini blogging application. You can even set Pukka as your external weblog client in NetNewsWire, NewsFire, or Vienna."
+f,"window.location=""http://flickr.com/search/?q=""+args.join("" "");",Flickr Search,"Search flickr by tags, text and/or user."
+thsrs,http://www.ironicsans.com/thsrs/?q=(q),Thsrs - The Shorter Thesaurus,"Popular new social networking services like Twitter, where users write extremely short messages about whateverâ€™s on their minds, present a challenge: How can you intelligently get across a complex thought in just 140 characters without needing to use ugly abbreviations (e.g. â€œw/o needing 2 use ugly abbrevâ€™sâ€)?
+
+If only there were a service that helps with the struggle of rewriting a 146-letter message to fit in a 140 character limit. Well now there is: Thsrs, the thesaurus that only gives you synonyms shorter than the word youâ€™re looking up. Just enter one of the longer words in your message, and Thsrs will suggest shorter words to use instead."
+icon,http://www.iconlet.com/search?n=(q),Icon Search,""
+gu,"window.location=""https://github.com/""+args[0];",GitHub User Quickjump,Jump directly to a Github user profile
+enpo,http://dictionary.reverso.net/english-portuguese/(q),Translate English to Portuguese,""
+hidden,"(function(){var i,f,j,e,div,label,ne; for(i=0;f=document.forms[i];++i)for(j=0;e=f[j];++j)if(e.type==%22hidden%22){ D=document; function C(t){return D.createElement(t);} function A(a,b){a.appendChild(b);} div=C(%22div%22); label=C(%22label%22);",Show Hidden Forms Fields,""
+etym,"window.location='http://www.etymonline.com/index.php?searchmode=none&search='+args.join("" "");",Online Etymology Dictionary,"This is a map of the wheel-ruts of modern English. Etymologies are not definitions; they're explanations of what our words meant and how they sounded 600 or 2,000 years ago. The dates beside a word indicate the earliest year for which there is a surviving written record of that word (in English, unless otherwise indicated). This should be taken as approximate, especially before about 1700, since a word may have been used in conversation for hundreds of years before it turns up in a manuscript that has had the good fortune to survive the centuries. The basic sources of this work are Weekley's ""An Etymological Dictionary of Modern English,"" Klein's ""A Comprehensive Etymological Dictionary of the English Language,"" ""Oxford English Dictionary"" (second edition), ""Barnhart Dictionary of Etymology,"" Holthauzen's ""Etymologisches WÃ¶rterbuch der Englischen Sprache,"" Ayto's ""20th Century Words,"" and Chapman's ""Dictionary of American Slang."""
+lipsum,http://zeke.sikelianos.com/projects/personal/lipsum/,Lorem Ipsum,""
+one,http://www.onelook.com/?ls=a&w=(q),OneLook Dictionary Search,"If you don't know the right word to use, we'll help you find it. No word is too obscure: More than 5 million words in more than 900 online dictionaries are indexed by the OneLook search engine."
+wtf,http://www.myfonts.com/WhatTheFont/,WhatTheFont,""
+y,http://search.yahoo.com/search?p=(q),Yahoo! Search,Regular old Yahoo search.
+tu,window.location='http://twitter.com/'+args[0];,Twitter User Quickjump,"Jump to a twitter user's page.
+
+Usage: tu zeke"
+wayback,"window.location=""http://wayback.archive.org/web/*/""+encodeURIComponent(location.href);",WayBack Machine QuickSearch,"The Internet Archive (IA) is a non-profit organization dedicated to maintaining an on-line library and archive of Web and multimedia resources. Located at the Presidio in San Francisco, California, this archive includes ""snapshots of the World Wide Web"" (archived copies of pages, taken at various points in time), software, movies, books, and audio recordings. To ensure the stability and endurance of the archive, IA is mirrored at the Bibliotheca Alexandrina in Egypt, the only library in the world with a mirror. The IA makes the collections available at no cost to researchers, historians, and scholars. It is a member of the American Library Association and is officially recognized by the State of California as a library."
+cal,"window.location=""http://www.google.com/calendar/render"";",Google Calendar,""
+ams,http://www.amazon.com/s/ref=nb_ss_dm_hp_nav_lk/002-8722033-4232026?initialSearch=1&url=search-alias%3Ddigital-music&field-keywords=(q),Amazon MP3 Quicksearch,"Amazon's answer to iTunes, AmazonMP3 serves up 256kbps DRM-free MP3s for 99 cents each."
+acr,http://www.acronymfinder.com/af-query.asp?p=dict&String=exact&Acronym=(q),Acronym Quicksearch,""
+to_get,"javascript:(function(){var x,i; x = document.forms; for (i = 0; i < x.length; ++i) x[i].method=""get""; alert(""Changed "" + x.length + "" forms to use the GET method.  After submitting a form from this page, you should be able to copy the resulting URL string and use it to make a new Queriac command.""); })();",Change method of all forms on current page to GET,"Want to convert a form on the web to a Queriac command? Rather than picking apart the HTML source of the form to construct a URL string, use this form to convert the form to GET. That way when you submit the form, you'll get the full URL string with all of the forms attributes right in your address bar, ready for for copying and pasting as the URL of your new Queriac command."
+rd,http://www.onelook.com/?clue=(q),OneLook Reverse Dictionary,"Find a word by giving the definition. You can also use it to find crossword puzzle answers.
+
+Examples..
+rd barrel maker (""cooper"")
+rd museum guide (""docent"")
+rd m?z??t:composer (""Mozart"")
+rd sat*:composer (""Satie"")"
+pop,http://del.icio.us/popular/(q),Del.icio.us Popular Tag Search,""
+ninja,http://ninjawords.com/(q),Ninjawords Search,"Ninjawords is a fast interface to Wiktionary. You can compare definitions by looking up many words at once by separating them with commas.
+
+Usage
+ninja copacetic
+ninja adroit,deft,cunning"
+hint,http://www.macosxhints.com/search.php?mode=search&type=all&keyType=all&query=(q),macosxhints.com Search,""
+dish,javascript:void(open('http://del.icio.us/url/check?show=notes_only&url='+encodeURIComponent(location.href)));,Del.icio.us History for the Current Page (in a new window),"Used to be javascript:location.href='http://del.icio.us/url/check?url='+encodeURIComponent(location.href) , which uses the current window."
+ws,http://wikislate.com/index.php?source=[:language]&term=(q),Translate a Word or Term to Many Languages (Wikislate),"Translate using Wikipedia and Google-did-you-mean. Read more at http://www.bonf.net/2007/06/09/translation-through-wikipedia/
+
+ws vegetarian
+ws -l fr conard
+ws -l es muÃ±eca"
+wik,"window.location=""http://en.wiktionary.org/wiki/""+args.join("" "");",Wiktionary Word Lookup,""
+cheat,"window.location=""http://cheat.errtheblog.com/s/""+args[0];",Cheat (Err the Blog),"A web-based alternative to Err the Blogs's commandline gem, Cheat. Cheat sheets are basically wiki pages accessible from the command line. You can browse, add, or edit cheat sheets. Try to keep them concise. For a style guide, check out the cheat cheat sheet.
+
+Read more at http://cheat.errtheblog.com/"
+dict,"window.location='http://www.dict.org/bin/Dict?Form=Dict2&Database=*&Query='+args.join("" "");",dict.org Quicksearch,"DICT is a dictionary network protocol created by the DICT Development Group. It is described by RFC 2229. Its goal is to surpass the Webster protocol and to allow clients to access more dictionaries during use.
+
+More info at http://en.wikipedia.org/wiki/DICT"
+rs,"window.location='http://www.google.com/reader/view/#search/'+args.join("" "");",Google Reader Search,Search your Google Reader feeds.
+iphone,"javascript: qq = prompt('Enter a Queriac Command', '');if (qq) location.href = 'http://queri.ac/[:user]/' + escape(qq)",iPhone Queriac Bookmarklet,""
+sub,window.location='http://www.google.com/ig/add?feedurl='+encodeURIComponent(location.href);,Subscribe with Google Reader,""
+gc,"location=""https://github.com/search?ref=simplesearch&type=Code&q=""+args.join("" "")",Github Code Search,""
+d,http://del.icio.us/tag/(q),Del.icio.us Tag Search (All),""
+fren,"window.location=""http://wordreference.com/fren/""+args.join("" "");",Translate French to English (WordReference.com),""
+gt,"parts = [
+    ""http://www.google.com/search?num=100&q=site:"", 
+    escape(location.hostname), 
+    "" "", 
+    args.join(' ')
+];
+window.location = parts.join("""");",Google Search the Current Domain,"This bookmarklet will conduct a Google search for your query, but limit the results to documents at your current location's domain.
+
+usage: j gthis dog"
+nf,"window.location=""http://movies.netflix.com/WiSearch?v1=""+args.join("" "");",Netflix Search,""
+ts,"location='https://twitter.com/search?q='+args.join("" "");
+
+",Twitter Search,"See what's happening - right now. 
+
+Examples
+#current near:93101
+cool filter:links
+""is down""
+#haiku
+""listening to""
+obama OR mccain"
+enes,"window.location='http://www.wordreference.com/es/translation.asp?tranword='+args.join("" "");",Translate English to Spanish (WordReference.com),""
+enfr,"window.location=""http://wordreference.com/enfr/""+args.join("" "");",Translate English to French,""
+mail,"/*
+Usage:
+mail            # https://mail.google.com/mail/u/0/#inbox
+mail foo 		# https://mail.google.com/mail/u/0/#search/foo
+mail h			# https://mail.google.com/mail/u/1/#inbox
+mail h bar		# https://mail.google.com/mail/u/1/#search/bar
+*/
+
+// Deafult to personal inbox
+var account = ""0"";
+
+// Go to Heroku inbox if first arg is ""h""
+if (args && args[0] == ""h"") {
+	args.shift();
+	account = ""1"";
+}
+
+// Search or Inbox?
+var destination;
+if (args && args.length > 0) {
+	destination = ""#search/"" + args.join("" "");
+} else {
+ destination = ""#inbox"";
+}
+
+location=""https://mail.google.com/mail/u/"" + account + ""/"" + destination;",Gmail Inbox/Search,""
+wiki,"window.location=""http://www.google.com/search?q=site:en.wikipedia.org%20""+args.join("" "");",Wikipedia Search (using Google),adds site:en.wikipedia.org to your Google search
+l,"window.location=""http://www.google.com/search?btnI=I'm%20Feeling%20Lucky&q=""+args.join("" "");","Google ""I'm Feeling Lucky""",Jumps to Google's first search result for the query you've entered.
+esen,"window.location='http://www.wordreference.com/es/en/translation.asp?spen='+args.join("" "");",Translate Spanish to English (WordReference.com),""
+yt,"window.location='http://www.youtube.com/results?search_query='+args.join("" "");",Youtube Quicksearch,""
+map,"window.location='https://maps.google.com/maps?q='+args.join("" "");",Google Maps Search,""
+spawn,window.location='http://queriac.herokuapp.com/users/zeke/commands/new?script='+encodeURIComponent(location.href)+'&name='+encodeURIComponent(document.title)+'&description='+window.getSelection()+'&keyword='+args[0];,Create a Queriac command based on Current Page,"When run, this bookmarklet will redirect you to Queriac's 'New Command' page, with some fields prepopulated for you.
+
+'Name' field: previous page's title
+'Keyword' field: if you specify an argument when calling the command, the argument will become the keyword.
+'URL' field: previous page's URL
+'Description' field: whatever block of text you had selected on the previous page"
+r,window.location='http://google.com/reader',Google Reader,""
+i,"window.location='https://www.google.com/search?tbm=isch&q='+args.join("" "");",Google Image Search,""
+slang,"window.location='http://www.urbandictionary.com/define.php?term='+args.join("" "");",Urban Dictionary,""
+post,window.location='http://delicious.com/save?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)+'&tags=(q)&notes='+window.getSelection()+'&v=5';,Post Current Page to Delicious.com,"This bookmarklet will redirect you to delicious.com's post page, prefilling the form as follows:
+
+'Title' field: the page's title
+'URL' field: the page's URL
+'Notes' field: whatever block of text you had selected on the page
+'Tags' field: if you specify space-delimited words as an argument when calling the command, they will become the tags.
+
+Note: The overhaul of delicious.com in July 2008 required a change in this bookmarklet. It seems prepopulation of tags is no longer supported. However, this can be overcome with a little help form a Greasemonkey script..
+
+See also: ppost command (same as this command but defaults bookmark to private status)"
