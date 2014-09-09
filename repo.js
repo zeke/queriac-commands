@@ -19,4 +19,4 @@ if (args[0].indexOf("/") == -1) {
  args[0] = "heroku/"+args[0]; 
 }
 
-window.location = "https://github.com/"+args[0];
+location = "https://github.com/"+args[0];

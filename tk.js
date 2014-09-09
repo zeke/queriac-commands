@@ -1,3 +1,3 @@
 // Typekit Font Search
 
-window.location="https://typekit.com/search?utf8=%E2%9C%93&q="+args.join(" ");
+location = "https://typekit.com/search?utf8=%E2%9C%93&q="+args.join(" ");

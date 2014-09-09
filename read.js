@@ -39,14 +39,14 @@ document.body.appendChild(postForm);formInputs={"token":token,"extensionType":ex
 for(inputKey in formInputs){if(formInputs.hasOwnProperty(inputKey)&&typeof formInputs[inputKey]!=='undefined'){newInput=document.createElement('input');newInput.setAttribute('type','hidden');newInput.setAttribute('name',inputKey);newInput.setAttribute('value',formInputs[inputKey]);postForm.appendChild(newInput);}}
 window.setTimeout(function(){postForm.submit();},50);}
 function read(){showLoading('Converting',true);submitForm(readPostUrl,false,{"read":1});}
-function save(){showLoading('Saving',true);if(optedOut){window.location=(failUrl+'?url='+encodeURIComponent(window.location.href)+'&reason=opt-out');return;}
+function save(){showLoading('Saving',true);if(optedOut){location = (failUrl+'?url='+encodeURIComponent(window.location.href)+'&reason=opt-out');return;}
 submitForm(savePostUrl,true,{"read":0});return;}
 function sendToKindle(){showLoading('Sending',true);submitForm(sendToKindleUrl,true,{});}
 function print(){showLoading('Converting',true);submitForm(readPostUrl,false,{"read":1,"print":1});}
 function init(){token=typeof window.readabilityToken==="undefined"?"":window.readabilityToken;extensionType=typeof window.readabilityExtensionType==="undefined"||window.readabilityExtensionType===""?'bookmarklet':window.readabilityExtensionType;extensionVersion=typeof window.readabilityExtensionVersion==="undefined"||window.readabilityExtensionVersion===""?"1":window.readabilityExtensionVersion;extensionBrowser=window.readabilityExtensionBrowser;legacyBookmarklet=typeof window.readStyle!=="undefined"?1:0;readUrl=getUrl();charset=document.characterSet||document.charset;formId='readability-form-'+(new Date()).getTime();frameId='readability-frame-'+(new Date()).getTime();kindleFrameId='readability-kindle-frame-'+(new Date()).getTime();articlePreviouslyValidated=(readUrl===referredArticleUrl&&referredArticleId!=='');listen("message",window,receiveMessage);listen("unload",window,hideLoading);if(!urlIsParsable(readUrl)){return false;}
 if(urlIsLocal(readUrl)){if(action==="send-to-kindle"&&document.getElementById('article-url')){readUrl=document.getElementById('article-url').getAttribute('href');}else{return false;}}
 if(!articlePreviouslyValidated&&readUrl===window.location.href){try{docHtml=minify(document.documentElement);}catch(e){docHtml='';}}
-if(docHtml.length>5242880){window.location=(failUrl+'?url='+encodeURIComponent(window.location.href)+'&reason=too-large');return false;}
+if(docHtml.length>5242880){location = (failUrl+'?url='+encodeURIComponent(window.location.href)+'&reason=too-large');return false;}
 if(!savePost&&action==="save"){docHtml='';}
 switch(action){case'save':save();break;case'send-to-kindle':if(typeof window.readabilityKindleAction!=="undefined"&&window.readabilityKindleAction==="showSetup"){showLoading('Loading',true);showKindleSetup();}else{sendToKindle();}
 break;case'print':print();break;default:if(document.location.hostname!=getHost(readUrl)){showLoading('Loading',true);document.location=readbarUrl+'?url='+encodeURIComponent(readUrl);return false;}

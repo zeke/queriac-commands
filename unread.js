@@ -4,4 +4,4 @@
 Open your unread Instapaper links
 */
 
-window.location="http://www.instapaper.com/u";
+location = "http://www.instapaper.com/u";

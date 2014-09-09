@@ -6,4 +6,4 @@ When you add &imgtype=face to the picture search string, only photos with faces 
 See http://lifehacker.com/software/url-hacking/google-enables-face-recognition-in-image-search-264331.php
 */
 
-window.location="http://images.google.com/images?imgtype=face&q="+args.join(" ");
+location = "http://images.google.com/images?imgtype=face&q="+args.join(" ");

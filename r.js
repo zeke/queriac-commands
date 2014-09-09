@@ -1,3 +1,3 @@
 // Google Reader
 
-window.location='http://google.com/reader'
+location = 'http://google.com/reader'

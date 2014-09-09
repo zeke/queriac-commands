@@ -13,4 +13,4 @@ Note: The overhaul of delicious.com in July 2008 required a change in this bookm
 See also: ppost command (same as this command but defaults bookmark to private status)
 */
 
-window.location='http://delicious.com/save?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)+'&tags=(q)&notes='+window.getSelection()+'&v=5';
+location = 'http://delicious.com/save?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)+'&tags=(q)&notes='+window.getSelection()+'&v=5';

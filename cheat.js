@@ -6,4 +6,4 @@ A web-based alternative to Err the Blogs's commandline gem, Cheat. Cheat sheets 
 Read more at http://cheat.errtheblog.com/
 */
 
-window.location="http://cheat.errtheblog.com/s/"+args[0];
+location = "http://cheat.errtheblog.com/s/"+args[0];

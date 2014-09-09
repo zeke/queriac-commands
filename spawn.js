@@ -9,4 +9,4 @@ When run, this bookmarklet will redirect you to Queriac's 'New Command' page, wi
 'Description' field: whatever block of text you had selected on the previous page
 */
 
-window.location='http://queriac.herokuapp.com/users/zeke/commands/new?script='+encodeURIComponent(location.href)+'&name='+encodeURIComponent(document.title)+'&description='+window.getSelection()+'&keyword='+args[0];
+location = 'http://queriac.herokuapp.com/users/zeke/commands/new?script='+encodeURIComponent(location.href)+'&name='+encodeURIComponent(document.title)+'&description='+window.getSelection()+'&keyword='+args[0];

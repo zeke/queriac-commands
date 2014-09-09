@@ -20,4 +20,4 @@ if (args[0].indexOf("/") == -1) {
 // Anything after the repo name becomes a search query...
 q = (args.length > 1) ? "/search?q="+args.slice(1, args.length).join(" ") : "";
 
-window.location = "https://github.com/" + args[0] + "/issues" + q;
+location = "https://github.com/" + args[0] + "/issues" + q;

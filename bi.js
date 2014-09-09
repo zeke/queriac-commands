@@ -4,4 +4,4 @@
 Bing is a new search engine from Microsoft. The web search is pretty standard, but the image search has some nice features that set it apart from Google, Yahoo, and the others.
 */
 
-window.location="http://www.bing.com/images/search?q="+args.join(" ");
+location = "http://www.bing.com/images/search?q="+args.join(" ");

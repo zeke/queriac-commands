@@ -4,4 +4,4 @@
 Search flickr by tags, text and/or user.
 */
 
-window.location="http://flickr.com/search/?q="+args.join(" ");
+location = "http://flickr.com/search/?q="+args.join(" ");

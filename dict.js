@@ -6,4 +6,4 @@ DICT is a dictionary network protocol created by the DICT Development Group. It 
 More info at http://en.wikipedia.org/wiki/DICT
 */
 
-window.location='http://www.dict.org/bin/Dict?Form=Dict2&Database=*&Query='+args.join(" ");
+location = 'http://www.dict.org/bin/Dict?Form=Dict2&Database=*&Query='+args.join(" ");

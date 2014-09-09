@@ -1,3 +1,3 @@
 // GitHub - My Gists
 
-window.location='http://gist.github.com/mine';
+location = 'http://gist.github.com/mine';

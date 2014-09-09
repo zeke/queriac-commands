@@ -12,4 +12,4 @@ parts = [
     " ", 
     args.join(' ')
 ];
-window.location = parts.join("");
+location = parts.join("");

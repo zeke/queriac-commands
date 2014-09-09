@@ -1,3 +1,3 @@
 // Sniphr Search
 
-window.location="http://sniphr.com/sniphs?q="+args.join(" ");
+location = "http://sniphr.com/sniphs?q="+args.join(" ");
